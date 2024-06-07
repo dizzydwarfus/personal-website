@@ -84,6 +84,9 @@ body {
 .navbar__links:hover::after {
   width: 100%;
 }
+.navbar__links.active-link::after {
+  width: 100%;
+}
 
 .header__text {
   color: #fff;
@@ -165,4 +168,10 @@ footer {
 }
 .about__tab-links.active-link::after {
   width: 100%;
+}
+
+.about__tab-subtitlelinks {
+  font-size: 10px;
+  color: #ababab;
+  margin-bottom: 20px;
 }
