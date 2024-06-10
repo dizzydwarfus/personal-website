@@ -27,11 +27,9 @@ body {
 
 .navbar {
   display: flex;
-  align-items: center;
   height: 100px;
   width: 100%;
   font-size: 1.5rem;
-  position: sticky;
   z-index: 999;
   justify-content: space-between;
 }
@@ -48,7 +46,7 @@ body {
   display: flex;
   align-items: center;
   list-style: none;
-  margin: 10px 50px;
+  margin: 10px 20px;
   justify-content: flex-end;
   width: 100%;
 }
@@ -103,15 +101,6 @@ body {
   color: #ff004f;
 }
 
-footer {
-  background: #333;
-  color: #fff;
-  height: 100px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 /* About Section */
 #about {
   padding: 80px 0;
@@ -128,6 +117,7 @@ footer {
 .about__column-1 img {
   width: 100%;
   border-radius: 15px;
+  margin: 10px 10px;
 }
 .about__column-2 {
   flex-basis: 60%;
@@ -144,7 +134,7 @@ footer {
 }
 .about__tab-titles {
   display: flex;
-  margin: 20px 0 40px;
+  margin: 10px 10px 30px;
 }
 .about__tab-links {
   margin-right: 50px;
@@ -170,8 +160,75 @@ footer {
   width: 100%;
 }
 
-.about__tab-subtitlelinks {
-  font-size: 10px;
+.about__tab-contents {
+  display: none;
+}
+.about__tab-contents.active-content {
+  display: block;
+}
+
+.about__tab-contents-list-items {
+  list-style: none;
+  margin: 20px 0px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.list-items-title {
+  color: #b54769;
+  font-size: 16px;
+}
+
+.duration {
   color: #ababab;
-  margin-bottom: 20px;
+  font-size: 12px;
+}
+
+.logo-div {
+  flex-basis: 20%;
+  margin: 0px 10px;
+}
+.logo-div img {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  border: 2px solid #fff;
+  background-color: #fff;
+}
+.content-div {
+  flex-basis: 80%;
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+  background-color: #3e3e3e;
+  color: #e1e5e9;
+}
+
+#profile_links {
+  margin: 20px 0px;
+}
+
+.profile__container {
+  display: inline-block;
+}
+
+.profile__row {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+}
+
+.profile__column a {
+  color: #e1e5e9;
+  text-decoration: none;
+}
+
+.profile__column i {
+  font-size: 30px;
+}
+
+footer p {
+  margin-top: 20px;
 }

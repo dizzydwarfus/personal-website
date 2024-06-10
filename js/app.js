@@ -1,23 +1,94 @@
 document.addEventListener('DOMContentLoaded', function() {
     const tabLinks = document.querySelectorAll('.about__tab-links');
+    const tabContents = document.querySelectorAll('.about__tab-contents')
+
+    tabLinks.forEach((link) => {
+        const text = link.textContent.trim().toLowerCase();
+        const content = document.getElementById(text)
+        link.content = content;
+    });
+    
+    function removeActiveClasses() {
+        tabLinks.forEach(link => 
+            link.classList.remove('active-link'));
+        tabContents.forEach(content =>
+            content.classList.remove('active-content'));
+    }
+
+    function activateTab(link) {
+        removeActiveClasses();
+
+        link.classList.add('active-link');
+
+        const content = link.content;
+        if (content) {
+            content.classList.add('active-content');
+
+            fetchData(content.id).then(data => {
+                injectListItems(data, content.id);
+            });
+        }
+    }
 
     tabLinks.forEach(link => {
-        link.addEventListener('click', function() {
-            handleTabClick(link);
+        link.addEventListener('click', (event) => {
+            activateTab(event.target);
         });
     });
 
-    function handleTabClick(link) {
-        tabLinks.forEach(item => {
-            item.classList.remove('active-link');
-        });
-
-        link.classList.add('active-link');
-        console.log('Clicked tab:', link.textContent);
+    // Activate the first tab when the script is loaded
+    if (tabLinks.length > 0) {
+        activateTab(tabLinks[0]);
     }
 });
 
-document.addEventListener('DOMContentLoaded', function() {
-    // add javascript to inject html to load educaation information from "education.json, skills.json, and experience.json"
-    const tabLinks = document.querySelectorAll('.about__tab-links');
-});
+function fetchData(key) {
+    return fetch ('../data/about_information.json')
+    .then(response => response.json())
+    .then(data => {
+        return data[key];
+    });
+}
+
+function injectListItems(data, contentId) {
+    const activeContent = document.querySelector('.active-content');
+    const ul = activeContent.querySelector('ul');
+
+    ul.innerHTML = ''; 
+
+    data.forEach((item) => {
+        const li = document.createElement('li');
+        li.classList.add('about__tab-contents-list-items');
+        
+        const logoDiv = document.createElement('div');
+        logoDiv.classList.add('logo-div');
+        li.appendChild(logoDiv);
+
+        const contentDiv = document.createElement('div');
+        contentDiv.classList.add('content-div');
+        li.appendChild(contentDiv);
+
+        if (contentId == 'education') {
+        logoDiv.innerHTML = `<img src="${item.logo}" alt="logo" class="logo">`
+        contentDiv.innerHTML += `<span class="list-items-title">${Object.values(item)[0]}</span>`;
+        contentDiv.innerHTML += `<br>${Object.values(item)[1]}`;
+        contentDiv.innerHTML += `<br><span class="duration">${Object.values(item)[2]} - ${Object.values(item)[3]}</span>`
+        }
+
+        if (contentId == 'experience') {
+        logoDiv.innerHTML = `<img src="${item.logo}" alt="logo" class="logo">`
+        contentDiv.innerHTML = `<span class="list-items-title">${Object.values(item)[1]}</span>`;
+        contentDiv.innerHTML += `<br>${Object.values(item)[0]}, ${Object.values(item)[3]}`;
+        contentDiv.innerHTML += `<br><span class="duration">${Object.values(item)[2]}</span>`
+        }
+
+        if (contentId == 'skills') {
+        logoDiv.innerHTML = `<img src="${item.logo}" alt="logo" class="logo">`
+        contentDiv.innerHTML = `<span class="list-items-title">${Object.values(item)[0]}</span>`;
+        contentDiv.innerHTML += `<br>${Object.values(item)[1]}`;
+        }
+
+        ul.appendChild(li);
+    });
+    console.log(ul);
+}
