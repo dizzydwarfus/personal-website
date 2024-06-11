@@ -90,6 +90,7 @@ body {
   color: #fff;
   font-size: 20px;
   margin-top: 20%;
+  margin-bottom: 20px;
 }
 
 .header__text h1 {
@@ -100,11 +101,20 @@ body {
 .header__text h1 span {
   color: #ff004f;
 }
+.info-message {
+  padding: 10px;
+  background-color: #979797; /* Light blue background */
+  border-left: 6px solid #ff8000; /* Blue border */
+  margin-bottom: 15px;
+  font-size: 15px;
+}
 
 /* About Section */
 #about {
   padding: 80px 0;
   color: #ababab;
+  max-width: 1300px;
+  margin: 0 auto;
 }
 .about__row {
   display: flex;
@@ -131,6 +141,7 @@ body {
   font-size: 20px;
   color: #ababab;
   margin-bottom: 30px;
+  text-align: justify;
 }
 .about__tab-titles {
   display: flex;
