@@ -92,3 +92,22 @@ function injectListItems(data, contentId) {
     });
     console.log(ul);
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+    const container = document.querySelector('.layer-container');
+    const layers = document.querySelectorAll('.layer');
+
+    container.addEventListener('mouseover', () => {
+        layers.forEach((layer, index) => {
+            layer.style.transform = `translateX(-500px) translateY(${index * 50}px) rotateX(90deg) rotateY(90deg) rotateZ(-90deg)`;
+            layer.style.color = 'white';
+        });
+    });
+
+    container.addEventListener('mouseout', () => {
+        layers.forEach((layer, index) => {
+            layer.style.transform = `translateZ(${index * -1}px)`;
+            layer.style.color = layer.style.backgroundColor;
+        });
+    });
+});
