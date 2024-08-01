@@ -1,2 +1,5 @@
 personal_website_312
 .DS_Store
+*.log
+*.txt
+*.csv
