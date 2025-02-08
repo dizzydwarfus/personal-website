@@ -1,104 +1,97 @@
 {
-    "education": [
-        {
-            "school": "University of Groningen",
-            "degree": "M.S.c in Chemical Engineering",
-            "started": "September 2020",
-            "graduated": "August 2022",
-            "description": "Majored in advance process engineering with thesis in numerical modeling of homogeneous catalytic reactions in fractals.",
-            "logo": "../images/rijksuniversiteit_groningen.png"
-        },
-        {
-            "school": "University of Groningen",
-            "degree": "B.S.c in Chemical Engineering",
-            "started": "September 2017",
-            "graduated": "August 2020",
-            "description": "...",
-            "logo": "../images/rijksuniversiteit_groningen.png"
-            
-        },
-        {
-            "school": "University of Groningen",
-            "degree": "Summery School for Honours Programme",
-            "started": "September 2019",
-            "graduated": "August 2029",
-            "description": "...",
-            "logo": "../images/rijksuniversiteit_groningen.png"
-
-        }
-    ],
-    "experience": [
-        {
-            "company": "BASF Forward AM",
-            "title": "Sales Operations Manager",
-            "years": "June 2023 - September 2024",
-            "location": "Emmen, Netherlands",
-            "description": "...",
-            "logo": "../images/basf_forward_am.jpeg"
-
-        },
-        {
-            "company": "BASF Forward AM",
-            "title": "Process Engineer Trainee",
-            "years": "December 2022 - June 2023 ",
-            "location": "Emmen, Netherlands",
-            "description": "...",
-            "logo": "../images/basf_forward_am.jpeg"
-        },
-        {
-            "company": "Eurofins GSC Services",
-            "title": "Permanent Improvement Programme Intern",
-            "years": "June 2022 - December 2022",
-            "location": "Brussels, Belgium  ",
-            "description": "...",
-            "logo": "../images/eurofins.webp"
-
-        },
-        {
-            "company": "University of Groningen",
-            "title": "Head Mentor/Teaching Assistant",
-            "years": "September 2020 - June 2022",
-            "location": "Groningen, Netherlands",   
-            "description": "...",
-            "logo": "../images/rijksuniversiteit_groningen.png"
-        },
-        {
-            "company": "Kroton Volleyball Association",
-            "title": "Treasurer for Beach Committee",
-            "years": "January 2021 - August 2022",
-            "location": "Groningen, Netherlands",
-            "description": "...",
-            "logo": "../images/kroton_volleyball.png"
-        },
-        {
-            "company": "University of Groningen",
-            "title": "Student Lab Assistant",
-            "years": "January 2020 - February 2020",
-            "location": "Groningen, Netherlands",
-            "description": "...",
-            "logo": "../images/rijksuniversiteit_groningen.png"
-        }
-    ],
-    "skills": [
-        {
-            "name": "Python",
-            "projects": [
-                "SEC Scraper",
-                "Investment Dashboard",
-                "NBA Data Scraper",
-                "General Chatbot",
-                "Salesforce-Data Integration",
-                "Expense Tracker"
-                ],
-            "logo": "../images/python.jpg"
-        },
-        {
-            "name": "HTML, CSS, Javascript",
-            "projects": [
-                "Portfolio Website",
-                "Expense Tracker"
-                ],
-            "logo": "../images/html_css_js.jpg"
-        }
-    ]
+  "education": [
+    {
+      "school": "University of Groningen",
+      "degree": "M.S.c in Chemical Engineering",
+      "started": "September 2020",
+      "graduated": "August 2022",
+      "description": "Majored in advance process engineering with thesis in numerical modeling of homogeneous catalytic reactions in fractals.",
+      "logo": "/images/rijksuniversiteit_groningen.png"
+    },
+    {
+      "school": "University of Groningen",
+      "degree": "B.S.c in Chemical Engineering",
+      "started": "September 2017",
+      "graduated": "August 2020",
+      "description": "...",
+      "logo": "/images/rijksuniversiteit_groningen.png"
+    },
+    {
+      "school": "University of Groningen",
+      "degree": "Summery School for Honours Programme",
+      "started": "September 2019",
+      "graduated": "August 2029",
+      "description": "...",
+      "logo": "/images/rijksuniversiteit_groningen.png"
     }
+  ],
+  "experience": [
+    {
+      "company": "BASF Forward AM",
+      "title": "Sales Operations Manager",
+      "years": "June 2023 - September 2024",
+      "location": "Emmen, Netherlands",
+      "description": "...",
+      "logo": "/images/basf_forward_am.jpeg"
+    },
+    {
+      "company": "BASF Forward AM",
+      "title": "Process Engineer Trainee",
+      "years": "December 2022 - June 2023 ",
+      "location": "Emmen, Netherlands",
+      "description": "...",
+      "logo": "/images/basf_forward_am.jpeg"
+    },
+    {
+      "company": "Eurofins GSC Services",
+      "title": "Permanent Improvement Programme Intern",
+      "years": "June 2022 - December 2022",
+      "location": "Brussels, Belgium  ",
+      "description": "...",
+      "logo": "/images/eurofins.webp"
+    },
+    {
+      "company": "University of Groningen",
+      "title": "Head Mentor/Teaching Assistant",
+      "years": "September 2020 - June 2022",
+      "location": "Groningen, Netherlands",
+      "description": "...",
+      "logo": "/images/rijksuniversiteit_groningen.png"
+    },
+    {
+      "company": "Kroton Volleyball Association",
+      "title": "Treasurer for Beach Committee",
+      "years": "January 2021 - August 2022",
+      "location": "Groningen, Netherlands",
+      "description": "...",
+      "logo": "/images/kroton_volleyball.png"
+    },
+    {
+      "company": "University of Groningen",
+      "title": "Student Lab Assistant",
+      "years": "January 2020 - February 2020",
+      "location": "Groningen, Netherlands",
+      "description": "...",
+      "logo": "/images/rijksuniversiteit_groningen.png"
+    }
+  ],
+  "skills": [
+    {
+      "name": "Python",
+      "projects": [
+        "SEC Scraper",
+        "Investment Dashboard",
+        "NBA Data Scraper",
+        "General Chatbot",
+        "Salesforce-Data Integration",
+        "Expense Tracker"
+      ],
+      "logo": "/images/python.jpg"
+    },
+    {
+      "name": "HTML, CSS, Javascript",
+      "projects": ["Portfolio Website", "Expense Tracker"],
+      "logo": "/images/html_css_js.jpg"
+    }
+  ]
+}
