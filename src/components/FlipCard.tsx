@@ -15,8 +15,6 @@ interface FlipCardProps {
 export default function FlipCard({
   frontImg,
   backImg,
-  width = 120,
-  height = 120,
 }: FlipCardProps) {
   const [flipped, setFlipped] = useState(false);
 
