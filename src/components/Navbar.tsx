@@ -19,7 +19,7 @@ export default function Navbar() {
   ];
 
   return (
-    <header className="w-full bg-transparent h-20 flex items-center">
+    <header className="w-full bg-transparent h-20 flex items-center mt-6">
       <nav className="w-full max-w-6xl mx-auto flex items-center justify-between px-4">
         {/* Logo */}
         <Link href="/">

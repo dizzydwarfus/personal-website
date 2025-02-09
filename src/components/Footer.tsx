@@ -1,3 +1,6 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faLinkedin, faGithub } from '@fortawesome/free-brands-svg-icons';
+
 export default function Footer() {
   return (
     <footer className="w-full bg-gray-800 text-gray-200 py-6 mt-8 text-center">
@@ -9,7 +12,7 @@ export default function Footer() {
             rel="noopener noreferrer"
             className="text-gray-400 hover:text-white"
           >
-            <i className="fa-brands fa-linkedin text-2xl"></i>
+            <FontAwesomeIcon icon={faLinkedin} className="text-2xl" />
           </a>
           <a
             href="https://github.com/dizzydwarfus"
@@ -17,7 +20,7 @@ export default function Footer() {
             rel="noopener noreferrer"
             className="text-gray-400 hover:text-white"
           >
-            <i className="fa-brands fa-github text-2xl"></i>
+            <FontAwesomeIcon icon={faGithub} className="text-2xl" />
           </a>
         </div>
         <p className="text-sm">&copy; 2024 Lian</p>

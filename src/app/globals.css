@@ -7,10 +7,8 @@ body {
   background-image: url('/images/background.jpg');
   background-size: cover;
   background-position: center;
-}
-
-.bg-iceberg {
-  background: url('/images/iceberg_bg.jpg') no-repeat center/cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed; /* if you want a fixed parallax-like effect */
 }
 
 .perspective {

@@ -6,22 +6,26 @@ import Image from 'next/image';
 interface EducationItem {
   logo: string;
   degree: string;
-  institution: string;
-  start: string;
-  end: string;
+  school: string;
+  started: string;
+  graduated: string;
+  description: string;
 }
 
 interface ExperienceItem {
   logo: string;
   company: string;
-  position: string;
-  duration: string;
+  title: string;
+  years: string;
+  location: string;
+  description: string;
 }
 
 interface SkillItem {
   logo: string;
-  skill: string;
+  name: string;
   description: string;
+  projects: string;
 }
 
 interface AboutData {
@@ -30,7 +34,7 @@ interface AboutData {
   skills: SkillItem[];
 }
 
-export default function AboutTabs() {
+export default function ResumeTabs() {
   const [activeTab, setActiveTab] = useState<'education' | 'experience' | 'skills'>('education');
   const [data, setData] = useState<AboutData>({
     education: [],
@@ -45,8 +49,6 @@ export default function AboutTabs() {
       .then((json: AboutData) => setData(json))
       .catch((err) => console.error(err));
   }, []);
-
-  console.log(data)
 
   return (
     <div>
@@ -103,9 +105,9 @@ function TabContentEducation({ list }: { list: EducationItem[] }) {
           {/* Content */}
           <div>
             <span className="font-semibold">{item.degree}</span>
-            <div>{item.institution}</div>
+            <div>{item.school}</div>
             <div className="text-sm text-gray-300">
-              {item.start} - {item.end}
+              {item.started} - {item.graduated}
             </div>
           </div>
         </li>
@@ -133,9 +135,12 @@ function TabContentExperience({ list }: { list: ExperienceItem[] }) {
             )}
           </div>
           <div>
-            <span className="font-semibold">{item.position}</span>
+            <span className="font-semibold">{item.title}</span>
             <div>
-              {item.company}, {item.duration}
+              {item.company}
+            </div>
+            <div className="text-sm text-gray-300">
+              {item.years}
             </div>
           </div>
         </li>
@@ -163,7 +168,7 @@ function TabContentSkills({ list }: { list: SkillItem[] }) {
             )}
           </div>
           <div>
-            <span className="font-semibold">{item.skill}</span>
+            <span className="font-semibold">{item.name}</span>
             <div>{item.description}</div>
           </div>
         </li>
