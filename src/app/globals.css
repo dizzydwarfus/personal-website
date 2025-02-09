@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Additional custom styles if needed */
+body {
+  background-image: url('/images/background.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed; /* if you want a fixed parallax-like effect */
+}
+
+.perspective {
+  perspective: 1000px; /* So we can see the 3D effect */
+}
+
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+}
+
+.rotate-y-180 {
+  transform: rotateY(180deg);
+  /* Ensure we have transform-style: preserve-3d on the parent */
+}
