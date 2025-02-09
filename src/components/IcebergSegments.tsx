@@ -9,8 +9,8 @@ interface Segment {
   id: string;
   title: string;
   image: string;
-  // width: number;
-  // height: number;
+  width: number;
+  height: number;
   description: string;
 }
 
