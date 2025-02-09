@@ -27,6 +27,14 @@
   ],
   "experience": [
     {
+      "company": "Just Eat Takeaway.com",
+      "title": "Platform Engineer",
+      "years": "September 2024 - Present",
+      "location": "Enschede, Netherlands",
+      "description": "...",
+      "logo": "/images/justeattakeaway.jpeg"
+    },
+    {
       "company": "BASF Forward AM",
       "title": "Sales Operations Manager",
       "years": "June 2023 - September 2024",
@@ -76,6 +84,11 @@
     }
   ],
   "skills": [
+    {
+      "name": "Kubernetes",
+      "projects": [],
+      "logo": "/images/kubernetes.jpg"
+    },
     {
       "name": "Python",
       "projects": [

@@ -1,7 +1,7 @@
 import FlipCard from '@/components/FlipCard';
-import AboutTabs from '@/components/AboutTabs';
+import ResumeTabs from '@/components/ResumeTabs';
 
-export default function AboutPage() {
+export default function ResumePage() {
   return (
     <main className="max-w-6xl mx-auto py-12 px-4 text-gray-200">
       <div className="flex flex-col md:flex-row gap-8">
@@ -15,12 +15,7 @@ export default function AboutPage() {
 
         {/* About + Tabs */}
         <div className="flex-1 text-gray-100">
-          <h1 className="text-4xl mb-4">About Me</h1>
-          <p className="text-lg mb-6">
-            Hi, I&apos;m Lian. I&apos;m a multi-faceted enthusiast with a
-            passion for finance/economics, technology, data science, and more...
-          </p>
-          <AboutTabs />
+          <ResumeTabs />
         </div>
       </div>
     </main>

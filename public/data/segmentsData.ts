@@ -1,0 +1,42 @@
+export const icebergSegments = [
+  {
+    id: 'L1',
+    title: 'Professional Overview',
+    image: '/images/iceberg_L1.jpg',
+    width: 1000, 
+    height: 200,
+    description: `I have worked in multiple roles, from engineering to operations...`,
+  },
+  {
+    id: 'L2',
+    title: 'Personal Projects',
+    image: '/images/iceberg_L2.jpg',
+    width: 1000,
+    height: 200,
+    description: `I love building side projects that combine data science and DevOps...`,
+  },
+  {
+    id: 'L3',
+    title: 'Hobbies & Interests',
+    image: '/images/iceberg_L3.jpg',
+    width: 1000,
+    height: 200,
+    description: `Music, hiking, gaming, and learning new programming languages...`,
+  },
+  {
+    id: 'L4',
+    title: 'Core Values',
+    image: '/images/iceberg_L4.jpg',
+    width: 1000,
+    height: 200,
+    description: `Integrity, Curiosity, and Continuous Learning define how I approach...`,
+  },
+  {
+    id: 'L5',
+    title: 'Personal Growth & Learnings',
+    image: '/images/iceberg_L5.jpg',
+    width: 1000,
+    height: 200,
+    description: `Lifelong learning is the bedrock of my journey. I enjoy reading about data science...`,
+  },
+];
