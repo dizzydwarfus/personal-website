@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import Image from 'next/image';
 
 interface NavLink {
   name: string;
@@ -15,7 +16,6 @@ export default function Navbar() {
     { name: 'Home', path: '/' },
     { name: 'Portfolio', path: '/portfolio' },
     { name: 'Resume', path: '/resume' },
-    { name: 'About', path: '/about' },
   ];
 
   return (
@@ -23,8 +23,10 @@ export default function Navbar() {
       <nav className="w-full max-w-6xl mx-auto flex items-center justify-between px-4">
         {/* Logo */}
         <Link href="/">
-          <img
+          <Image
             src="/images/logo_v2.png"
+            width={120}
+            height={100}
             alt="Logo"
             className="w-28 cursor-pointer"
           />

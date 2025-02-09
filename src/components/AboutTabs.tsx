@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import Image from 'next/image';
 
 interface EducationItem {
   logo: string;
@@ -45,6 +46,8 @@ export default function AboutTabs() {
       .catch((err) => console.error(err));
   }, []);
 
+  console.log(data)
+
   return (
     <div>
       {/* Tab Buttons */}
@@ -88,8 +91,10 @@ function TabContentEducation({ list }: { list: EducationItem[] }) {
           {/* Logo */}
           <div className="w-16 h-16 flex-shrink-0">
             {item.logo && (
-              <img
+              <Image
                 src={item.logo}
+                width={64}
+                height={64}
                 alt="logo"
                 className="w-full h-full object-contain"
               />
@@ -118,8 +123,10 @@ function TabContentExperience({ list }: { list: ExperienceItem[] }) {
         <li key={idx} className="flex gap-4 items-start">
           <div className="w-16 h-16 flex-shrink-0">
             {item.logo && (
-              <img
+              <Image
                 src={item.logo}
+                width={64}
+                height={64}
                 alt="logo"
                 className="w-full h-full object-contain"
               />
@@ -146,8 +153,10 @@ function TabContentSkills({ list }: { list: SkillItem[] }) {
         <li key={idx} className="flex gap-4 items-start">
           <div className="w-16 h-16 flex-shrink-0">
             {item.logo && (
-              <img
+              <Image
                 src={item.logo}
+                width={64}
+                height={64}
                 alt="logo"
                 className="w-full h-full object-contain"
               />
