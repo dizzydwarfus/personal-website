@@ -12,6 +12,7 @@ interface Job {
   end: string;
   location: string;
   description: string;
+  logo?: string;
 }
 interface Project {
   name: string;
@@ -72,7 +73,7 @@ export default function IcebergStack() {
   return (
     <section className="p-0 m-0">
       <div className="text-center my-8">
-        <h2 className="text-4xl font-bold">Explore the Iceberg</h2>
+        <h2 className="text-teal-400 text-4xl font-bold">Lian's Iceberg</h2>
         <p className="text-gray-600">
           Click on a slice to reveal more beneath the surface
         </p>
@@ -83,7 +84,7 @@ export default function IcebergStack() {
           <motion.div
             key={segment.id}
             className="cursor-pointer p-0 m-0"
-            whileHover={{ scale: 1.05 }}
+            whileHover={{ scaleX: 1, scaleY: 0.95 }}
             onClick={() => openModal(segment)}
           >
             <Image
@@ -104,7 +105,7 @@ export default function IcebergStack() {
           <motion.div
             className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50"
             initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
+            animate={{ scale: 1.0, opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={closeModal}
           >
@@ -113,7 +114,7 @@ export default function IcebergStack() {
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.8, opacity: 0 }}
-              transition={{ duration: 0.4 }}
+              transition={{ duration: 0.3 }}
               onClick={(e) => e.stopPropagation()}
             >
               <h3 className="text-2xl font-bold mb-4">
@@ -125,23 +126,43 @@ export default function IcebergStack() {
                 {selectedSegment.description}
               </p>
 
-              {/* If it's the "Professional Overview" or if we just detect jobs in details */}
               {selectedSegment.details?.jobs && (
                 <div className="mt-4">
                   <h4 className="text-lg font-semibold mb-2">Job Experience</h4>
 
                   <ul className="relative border-l border-gray-300 ml-4 pl-4">
-                    {/* vertical timeline style */}
                     {selectedSegment.details.jobs.map((job, idx) => (
-                      <li key={idx} className="mb-6 ml-2">
+                      <li key={idx} className="mb-6 ml-2 relative">
+                        {/* The timeline bullet circle */}
                         <div className="absolute -left-3 top-0 w-2 h-2 rounded-full bg-pink-500"></div>
-                        <h5 className="text-md font-bold text-gray-800">
-                          {job.role} @ {job.company}
-                        </h5>
-                        <div className="text-sm text-gray-500">
-                          {job.start} - {job.end} | {job.location}
+
+                        {/* Row for job logo + details */}
+                        <div className="flex items-start gap-4">
+                          {/* Logo (if any) */}
+                          {job.logo && (
+                            <div className="relative w-12 h-12 flex-shrink-0">
+                              <Image
+                                src={job.logo}
+                                alt={`${job.company} logo`}
+                                fill
+                                style={{ objectFit: "contain" }}
+                              />
+                            </div>
+                          )}
+
+                          {/* Textual details */}
+                          <div>
+                            <h5 className="text-md font-bold text-gray-800">
+                              {job.role} @ {job.company}
+                            </h5>
+                            <div className="text-sm text-gray-500">
+                              {job.start} - {job.end} | {job.location}
+                            </div>
+                            <p className="text-gray-600 mt-1">
+                              {job.description}
+                            </p>
+                          </div>
                         </div>
-                        <p className="text-gray-600 mt-1">{job.description}</p>
                       </li>
                     ))}
                   </ul>
