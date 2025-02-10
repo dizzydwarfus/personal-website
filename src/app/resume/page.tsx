@@ -1,4 +1,4 @@
-import AboutPage from '@/components/ResumePage';
+import SummaryPage from '@/components/SummaryPage';
 
 export default function ResumePage() {
   return (
@@ -6,7 +6,7 @@ export default function ResumePage() {
       <h1 className="text-4xl mb-6">My Resume</h1>
       <p>Provide a downloadable PDF or a summary of your CV here.</p>
 
-      <AboutPage/>
+      <SummaryPage/>
 
     </main>
   );

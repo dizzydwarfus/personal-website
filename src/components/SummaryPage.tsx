@@ -1,7 +1,7 @@
 import FlipCard from '@/components/FlipCard';
-import ResumeTabs from '@/components/ResumeTabs';
+import SummaryTabs from '@/components/SummaryTabs';
 
-export default function ResumePage() {
+export default function SummaryPage() {
   return (
     <main className="max-w-6xl mx-auto py-12 px-4 text-gray-200">
       <div className="flex flex-col md:flex-row gap-8">
@@ -13,9 +13,9 @@ export default function ResumePage() {
           />
         </div>
 
-        {/* About + Tabs */}
+        {/* Summary + Tabs */}
         <div className="flex-1 text-gray-100">
-          <ResumeTabs />
+          <SummaryTabs />
         </div>
       </div>
     </main>
