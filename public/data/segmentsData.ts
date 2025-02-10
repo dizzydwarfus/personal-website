@@ -15,6 +15,7 @@ export const icebergSegments = [
           end: 'Present',
           location: 'Enschede, Netherlands',
           description: 'Managing Kubernetes clusters, improving Internal Platforms',
+          logo: '/images/jobs/justeattakeaway.jpeg',
         },
         {
           company: 'BASF 3DPS Forward AM',
@@ -23,6 +24,7 @@ export const icebergSegments = [
           end: "September 2024",
           location: 'Emmen, Netherlands',
           description: 'Oversaw sales metrics and operational procedures',
+          logo: '/images/jobs/basf_forward_am.jpeg',
         },
       ]
     }
@@ -59,26 +61,26 @@ export const icebergSegments = [
       hobbies: [
         {
           name: 'Guitar',
-          icon: '/images/icons/guitar.png', 
+          icon: '/images/hobbies/guitar.png', 
           level: 'Casual Player',
-          description: 'I love learning new chords, jamming with friends, and exploring blues & rock riffs.',
+          description: 'I love learning acoustic fingerstyles and chord progressions on songs that I enjoy listening/singing to.',
         },
         {
           name: 'Analyzing Companies',
-          icon: '/images/icons/finance.png', 
+          icon: '/images/hobbies/financial_statement.png', 
           level: 'Enthusiast',
-          description: 'Following the economy and studying balance sheets to find interesting investment opportunities.',
+          description: 'Following the economy and studying financial statements to learn how a company is valued on paper.',
         },
         {
           name: 'Basketball',
-          icon: '/images/icons/basketball.png', 
-          level: 'Weekly Games',
-          description: 'A fun workout with friends. I enjoy the team play and competition.',
+          icon: '/images/hobbies/basketball.jpg', 
+          level: 'Favourite Sport',
+          description: 'A stress reliever by myself or a fun activity with a group.',
         },
         {
           name: 'Indoor Bouldering & Climbing',
-          icon: '/images/icons/climbing.png', 
-          level: 'Frequent Climber',
+          icon: '/images/hobbies/indoor_climbing.png', 
+          level: 'Weekly Climber',
           description: 'Great physical challenge and problem-solving on the wall—improves focus and strength.',
         },
       ],
@@ -95,17 +97,17 @@ export const icebergSegments = [
       values: [
         {
           name: 'Integrity',
-          icon: '/images/icons/integrity.png',
+          icon: '/images/values/integrity.png',
           description: 'I strive to be honest and transparent in my interactions.',
         },
         {
           name: 'Curiosity',
-          icon: '/images/icons/curiosity.png',
+          icon: '/images/values/curiosity.png',
           description: 'Always eager to learn, explore new ideas, and ask questions.',
         },
         {
           name: 'Continuous Learning',
-          icon: '/images/icons/learning.png',
+          icon: '/images/values/learning.png',
           description: 'A belief in lifelong education, both personally and professionally.',
         },
       ],
