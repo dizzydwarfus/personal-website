@@ -34,7 +34,7 @@ interface AboutData {
   skills: SkillItem[];
 }
 
-export default function ResumeTabs() {
+export default function SummaryTabs() {
   const [activeTab, setActiveTab] = useState<'education' | 'experience' | 'skills'>('education');
   const [data, setData] = useState<AboutData>({
     education: [],
