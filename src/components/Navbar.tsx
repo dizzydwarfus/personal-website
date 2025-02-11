@@ -1,8 +1,8 @@
-'use client';
+"use client";
 
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
-import Image from 'next/image';
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import Image from "next/image";
 
 interface NavLink {
   name: string;
@@ -13,9 +13,9 @@ export default function Navbar() {
   const pathname = usePathname();
 
   const navLinks: NavLink[] = [
-    { name: 'Home', path: '/' },
-    { name: 'Portfolio', path: '/portfolio' },
-    { name: 'Resume', path: '/resume' },
+    { name: "Home", path: "/" },
+    { name: "Portfolio", path: "/portfolio" },
+    { name: "Resume", path: "/resume" },
   ];
 
   return (
@@ -23,13 +23,13 @@ export default function Navbar() {
       <nav className="w-full max-w-6xl mx-auto flex items-center justify-between px-4">
         {/* Logo */}
         <Link href="/">
-          <Image
+          {/* <Image
             src="/images/logo_v2.png"
             width={120}
             height={100}
             alt="Logo"
             className="w-28 cursor-pointer"
-          />
+          /> */}
         </Link>
 
         {/* Nav Links */}
@@ -41,7 +41,7 @@ export default function Navbar() {
                 <Link
                   href={link.path}
                   className={`text-white text-lg relative hover:text-pink-500 transition
-                    ${isActive ? 'text-pink-500 after:w-full' : ''}
+                    ${isActive ? "text-pink-500 after:w-full" : ""}
                     after:absolute after:bottom-[-6px] after:left-0 after:h-[3px] after:bg-pink-500 after:w-0 hover:after:w-full after:transition-all`}
                 >
                   {link.name}
