@@ -1,5 +1,5 @@
-import FlipCard from '@/components/FlipCard';
-import SummaryTabs from '@/components/SummaryTabs';
+import FlipCard from "@/components/FlipCard";
+import SummaryTabs from "@/components/SummaryTabs";
 
 export default function SummaryPage() {
   return (

@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
-import { useState, useEffect } from 'react';
-import Image from 'next/image';
+import { useState, useEffect } from "react";
+import Image from "next/image";
 
 interface EducationItem {
   logo: string;
@@ -35,7 +35,9 @@ interface AboutData {
 }
 
 export default function SummaryTabs() {
-  const [activeTab, setActiveTab] = useState<'education' | 'experience' | 'skills'>('education');
+  const [activeTab, setActiveTab] = useState<
+    "education" | "experience" | "skills"
+  >("education");
   const [data, setData] = useState<AboutData>({
     education: [],
     experience: [],
@@ -44,7 +46,7 @@ export default function SummaryTabs() {
 
   useEffect(() => {
     // Fetch local JSON from /data/about_information.json
-    fetch('/data/about_information.json')
+    fetch("/data/about_information.json")
       .then((res) => res.json())
       .then((json: AboutData) => setData(json))
       .catch((err) => console.error(err));
@@ -54,12 +56,12 @@ export default function SummaryTabs() {
     <div>
       {/* Tab Buttons */}
       <div className="flex space-x-8 mb-4">
-        {(['education', 'experience', 'skills'] as const).map((tab) => (
+        {(["education", "experience", "skills"] as const).map((tab) => (
           <button
             key={tab}
             onClick={() => setActiveTab(tab)}
             className={`relative text-lg pb-1 ${
-              activeTab === tab ? 'text-pink-500 after:w-full' : ''
+              activeTab === tab ? "text-pink-500 after:w-full" : ""
             } 
             after:absolute after:bottom-[-2px] after:left-0 after:h-[3px] after:bg-pink-500 
             after:w-0 hover:after:w-full after:transition-all`}
@@ -71,13 +73,13 @@ export default function SummaryTabs() {
 
       {/* Tab Content */}
       <div className="text-white">
-        {activeTab === 'education' && (
+        {activeTab === "education" && (
           <TabContentEducation list={data.education} />
         )}
-        {activeTab === 'experience' && (
+        {activeTab === "experience" && (
           <TabContentExperience list={data.experience} />
         )}
-        {activeTab === 'skills' && <TabContentSkills list={data.skills} />}
+        {activeTab === "skills" && <TabContentSkills list={data.skills} />}
       </div>
     </div>
   );
@@ -136,12 +138,8 @@ function TabContentExperience({ list }: { list: ExperienceItem[] }) {
           </div>
           <div>
             <span className="font-semibold">{item.title}</span>
-            <div>
-              {item.company}
-            </div>
-            <div className="text-sm text-gray-300">
-              {item.years}
-            </div>
+            <div>{item.company}</div>
+            <div className="text-sm text-gray-300">{item.years}</div>
           </div>
         </li>
       ))}
