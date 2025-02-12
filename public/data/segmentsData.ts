@@ -123,7 +123,7 @@ export const icebergSegments = [
     details: {
       milestones: [
         {
-          year: 2020,
+          year: '2020',
           title: 'Dove into Python',
           lessons: [
             'Used Python for master thesis in Numerical Modeling',
@@ -131,7 +131,7 @@ export const icebergSegments = [
           ],
         },
         {
-          year: 2022,
+          year: '2022',
           title: 'Apprenticed to learn Chemical Extrusion of 3D-printing Filaments',
           lessons: [
             'Navigated complexity of single-screw extrusion',
@@ -139,7 +139,7 @@ export const icebergSegments = [
           ],
         },
         {
-          year: 2024,
+          year: '2024',
           title: 'Exploring Platform Engineering',
           lessons: [
             'Learning core technologies - Kubernetes, Helm, Terraform',

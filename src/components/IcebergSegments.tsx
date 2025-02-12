@@ -4,7 +4,6 @@ import React, { useState } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { icebergSegments } from "../../public/data/segmentsData";
-
 interface Job {
   company: string;
   role: string;
@@ -17,7 +16,7 @@ interface Job {
 interface Project {
   name: string;
   year: string;
-  techStack?: string;
+  techStack?: string[];
   description: string;
   imageUrl?: string;
   repoLink?: string;
@@ -73,7 +72,9 @@ export default function IcebergStack() {
   return (
     <section className="p-0 m-0">
       <div className="text-center my-8">
-        <h2 className="text-teal-400 text-4xl font-bold">Lian's Iceberg</h2>
+        <h2 className="text-teal-400 text-4xl font-bold">
+          Lian&apos;s Iceberg
+        </h2>
         <p className="text-gray-600">
           Click on a slice to reveal more beneath the surface
         </p>
