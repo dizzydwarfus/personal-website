@@ -271,3 +271,9 @@ export default function ResumePage() {
     </main>
   );
 }
+
+// TODO: collapse everything
+// hover for main info
+// click for details
+
+// TODO: make links <a></a>

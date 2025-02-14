@@ -88,35 +88,8 @@ export const icebergSegments = [
   },
   {
     id: 'L4',
-    title: 'Core Values and Principles',
-    image: '/images/iceberg_L4.jpg',
-    width: 1000,
-    height: 200,
-    description: 'The guiding principles that shape who I am.',
-    details: {
-      values: [
-        {
-          name: 'Integrity',
-          icon: '/images/values/integrity.png',
-          description: 'I strive to be honest and transparent in my interactions.',
-        },
-        {
-          name: 'Curiosity',
-          icon: '/images/values/curiosity.png',
-          description: 'Always eager to learn, explore new ideas, and ask questions.',
-        },
-        {
-          name: 'Continuous Learning',
-          icon: '/images/values/learning.png',
-          description: 'A belief in lifelong education, both personally and professionally.',
-        },
-      ],
-    },
-  },
-  {
-    id: 'L5',
     title: 'Personal Growth & Learnings',
-    image: '/images/iceberg_L5.jpg',
+    image: '/images/iceberg_L4.jpg',
     width: 1000,
     height: 200,
     description: 'Key milestones and lessons learned along my journey.',
@@ -145,6 +118,33 @@ export const icebergSegments = [
             'Learning core technologies - Kubernetes, Helm, Terraform',
             'Dove into AWS Management',
           ],
+        },
+      ],
+    },
+  },
+  {
+    id: 'L5',
+    title: 'Core Values and Principles',
+    image: '/images/iceberg_L5.jpg',
+    width: 1000,
+    height: 200,
+    description: 'The guiding principles that shape who I am.',
+    details: {
+      values: [
+        {
+          name: 'Integrity',
+          icon: '/images/values/integrity.png',
+          description: 'I strive to be honest and transparent in my interactions.',
+        },
+        {
+          name: 'Curiosity',
+          icon: '/images/values/curiosity.png',
+          description: 'Always eager to learn, explore new ideas, and ask questions.',
+        },
+        {
+          name: 'Continuous Learning',
+          icon: '/images/values/learning.png',
+          description: 'A belief in lifelong education, both personally and professionally.',
         },
       ],
     },
