@@ -37,6 +37,7 @@ export default function ResumePage() {
   interface LanguageItem {
     name: string;
     level: string;
+    countryCode: string;
   }
 
   interface ProjectItem {
@@ -220,8 +221,11 @@ export default function ResumePage() {
             {resumeData.languages.map((lang, idx) => (
               <li
                 key={idx}
-                className="bg-white shadow-sm px-4 py-2 rounded-lg text-sm text-gray-700"
+                className="bg-white shadow-sm px-4 py-2 rounded-lg text-sm text-gray-700 flex items-center gap-2"
               >
+                <span
+                  className={`fi fi-${lang.countryCode.toLowerCase()}`}
+                ></span>
                 <span className="font-bold text-teal-600">{lang.name}</span>
                 {": "}
                 <span className="text-gray-600">{lang.level}</span>
