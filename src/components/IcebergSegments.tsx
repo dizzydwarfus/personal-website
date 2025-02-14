@@ -354,3 +354,5 @@ export default function IcebergStack() {
     </section>
   );
 }
+
+//TODO: move hobbies to L4 and personal growth to L3
