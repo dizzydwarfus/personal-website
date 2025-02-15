@@ -1,65 +1,21 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { icebergSegments } from "../../public/data/segmentsData";
-interface Job {
-  company: string;
-  role: string;
-  start: string;
-  end: string;
-  location: string;
-  description: string;
-  logo?: string;
-}
-interface Project {
-  name: string;
-  year: string;
-  techStack?: string[];
-  description: string;
-  imageUrl?: string;
-  repoLink?: string;
-  liveLink?: string;
-}
-
-interface Hobby {
-  name: string;
-  icon?: string;
-  level?: string;
-  description?: string;
-}
-
-interface Value {
-  name: string;
-  icon?: string;
-  description?: string;
-}
-
-interface Milestone {
-  year: string;
-  title: string;
-  lessons?: string[];
-}
-interface Details {
-  jobs?: Job[];
-  projects?: Project[];
-  hobbies?: Hobby[];
-  values?: Value[];
-  milestones?: Milestone[];
-}
-interface Segment {
-  id: string;
-  title: string;
-  image: string;
-  width: number;
-  height: number;
-  description: string;
-  details?: Details; // optional
-}
+import { icebergSegments } from "@public/data/segmentsData";
+import { Segment, ResumeData } from "@/app/interfaces";
 
 export default function IcebergStack() {
   const [selectedSegment, setSelectedSegment] = useState<Segment | null>(null);
+  const [resumeData, setResumeData] = useState<ResumeData | null>(null);
+
+  useEffect(() => {
+    fetch("/data/resume.json")
+      .then((res) => res.json())
+      .then((data: ResumeData) => setResumeData(data))
+      .catch((err) => console.error(err));
+  }, []);
 
   const openModal = (segment: Segment) => {
     setSelectedSegment(segment);
@@ -127,46 +83,55 @@ export default function IcebergStack() {
                 {selectedSegment.description}
               </p>
 
-              {selectedSegment.details?.jobs && (
+              {selectedSegment.resumeKey === "experience" && (
                 <div className="mt-4">
-                  <h4 className="text-lg font-semibold mb-2">Job Experience</h4>
+                  <h4 className="text-lg font-semibold mb-2">Experience</h4>
+                  {/* If resumeData is null, bail out or return null */}
+                  {!resumeData ? (
+                    <p>Loading experience data...</p>
+                  ) : (
+                    <ul className="relative border-l border-gray-300 ml-4 pl-4">
+                      {resumeData?.[selectedSegment.resumeKey]?.map(
+                        (experience, idx) => (
+                          <li key={idx} className="mb-6 ml-2 relative">
+                            {/* The timeline bullet circle */}
+                            <div className="absolute -left-3 top-0 w-2 h-2 rounded-full bg-pink-500"></div>
 
-                  <ul className="relative border-l border-gray-300 ml-4 pl-4">
-                    {selectedSegment.details.jobs.map((job, idx) => (
-                      <li key={idx} className="mb-6 ml-2 relative">
-                        {/* The timeline bullet circle */}
-                        <div className="absolute -left-3 top-0 w-2 h-2 rounded-full bg-pink-500"></div>
+                            {/* Row for experience logo + details */}
+                            <div className="flex items-start gap-4">
+                              {/* Logo (if any) */}
+                              {experience.logo && (
+                                <div className="relative w-12 h-12 flex-shrink-0">
+                                  <Image
+                                    src={experience.logo}
+                                    alt={`${experience.company} logo`}
+                                    fill
+                                    style={{ objectFit: "contain" }}
+                                  />
+                                </div>
+                              )}
 
-                        {/* Row for job logo + details */}
-                        <div className="flex items-start gap-4">
-                          {/* Logo (if any) */}
-                          {job.logo && (
-                            <div className="relative w-12 h-12 flex-shrink-0">
-                              <Image
-                                src={job.logo}
-                                alt={`${job.company} logo`}
-                                fill
-                                style={{ objectFit: "contain" }}
-                              />
+                              {/* Textual details */}
+                              <ul className="border-l border-gray-200 ml-5 pl-4 space-y-6 relative">
+                                {experience.roles.map((role, idx) => (
+                                  <li key={idx} className="relative">
+                                    <div>
+                                      <h5 className="text-md font-bold text-gray-800">
+                                        {role.title}
+                                      </h5>
+                                      <div className="text-sm text-gray-500">
+                                        {role.years}
+                                      </div>
+                                    </div>
+                                  </li>
+                                ))}
+                              </ul>
                             </div>
-                          )}
-
-                          {/* Textual details */}
-                          <div>
-                            <h5 className="text-md font-bold text-gray-800">
-                              {job.role} @ {job.company}
-                            </h5>
-                            <div className="text-sm text-gray-500">
-                              {job.start} - {job.end} | {job.location}
-                            </div>
-                            <p className="text-gray-600 mt-1">
-                              {job.description}
-                            </p>
-                          </div>
-                        </div>
-                      </li>
-                    ))}
-                  </ul>
+                          </li>
+                        )
+                      )}
+                    </ul>
+                  )}
                 </div>
               )}
 
@@ -195,9 +160,11 @@ export default function IcebergStack() {
                             {proj.name}
                           </h5>
                           <p className="text-sm text-gray-600 mb-2">
-                            {proj.year} | {proj.techStack?.join(", ")}
+                            {proj.timeframe} | {proj.techStack?.join(", ")}
                           </p>
-                          <p className="text-sm mb-3">{proj.description}</p>
+                          <p className="text-sm mb-3">
+                            {proj.bulletPoints.join(", ")}
+                          </p>
                           {/* Links (Repo / Live Demo) */}
                           <div className="flex space-x-4">
                             {proj.repoLink && (
