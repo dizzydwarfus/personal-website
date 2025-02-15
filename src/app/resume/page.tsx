@@ -2,58 +2,10 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import { ResumeData } from "@/app/interfaces";
 
 export default function ResumePage() {
   // ----------- Interfaces -----------
-  interface EducationItem {
-    school: string;
-    degree: string;
-    started: string;
-    graduated: string;
-    description: string;
-    logo?: string;
-  }
-
-  interface Role {
-    title: string;
-    years: string;
-    bulletPoints: string[];
-  }
-
-  interface ExperienceItem {
-    company: string;
-    logo?: string;
-    location: string;
-    roles: Role[];
-  }
-
-  interface SkillItem {
-    name: string;
-    roles?: string[];
-    projects?: string[];
-    logo?: string;
-  }
-
-  interface LanguageItem {
-    name: string;
-    level: string;
-    countryCode: string;
-  }
-
-  interface ProjectItem {
-    title: string;
-    link?: string;
-    timeframe?: string;
-    bulletPoints?: string[];
-  }
-
-  interface ResumeData {
-    education: EducationItem[];
-    experience: ExperienceItem[];
-    skills: SkillItem[];
-    languages: LanguageItem[];
-    projects: ProjectItem[];
-  }
 
   // ---------- State + Fetch ----------
   const [resumeData, setResumeData] = useState<ResumeData | null>(null);
@@ -243,14 +195,14 @@ export default function ResumePage() {
             {resumeData.projects.map((proj, idx) => (
               <div key={idx} className="bg-white rounded-lg shadow-sm p-6">
                 <h4 className="text-lg font-bold text-teal-700 mb-1">
-                  {proj.title}
+                  {proj.name}
                 </h4>
                 {proj.timeframe && (
                   <p className="text-xs text-gray-400 mb-2">{proj.timeframe}</p>
                 )}
-                {proj.link && (
+                {proj.repoLink && (
                   <a
-                    href={proj.link}
+                    href={proj.repoLink}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-blue-500 hover:underline text-sm block mb-2"
