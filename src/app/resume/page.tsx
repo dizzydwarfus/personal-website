@@ -5,8 +5,6 @@ import Image from "next/image";
 import { ResumeData } from "@/app/interfaces";
 
 export default function ResumePage() {
-  // ----------- Interfaces -----------
-
   // ---------- State + Fetch ----------
   const [resumeData, setResumeData] = useState<ResumeData | null>(null);
 
