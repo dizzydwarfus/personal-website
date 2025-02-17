@@ -89,3 +89,18 @@ export interface Segment {
   details?: Details;
   resumeKey?: string;
 }
+
+// Anecdotes Section
+export interface StarCategory {
+  category: string;
+  details: StarAnecdote[];
+}
+export interface StarAnecdote {
+  title: string;
+  situation: string;
+  task: string;
+  action: string;
+  result: string;
+  reflection: string;
+  type?: string;
+}

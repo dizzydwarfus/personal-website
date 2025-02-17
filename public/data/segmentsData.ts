@@ -19,8 +19,73 @@ export const icebergSegments = [
   },
   {
     id: "L3",
-    title: "Hobbies & Interests",
+    title: "Personal Growth & Learnings",
     image: "/images/iceberg_L3.jpg",
+    width: 1000,
+    height: 200,
+    description: "Key milestones and lessons learned along my journey.",
+    details: {
+      milestones: [
+        {
+          year: "2017 - 2020",
+          title: "Foundations in Chemical Engineering",
+          lessons: [
+            "Laid the groundwork in process design and reaction engineering.",
+            "Discovered an interest in numerical methods through lab research.",
+            "Cultivated project discipline via the Honours Programme.",
+          ],
+        },
+        {
+          year: "2019",
+          title: "International Summer School Experience",
+          lessons: [
+            "Explored the social impact of Barcelona’s Superilles (urban planning).",
+            "Gained cultural perspective and collaborative research skills.",
+          ],
+        },
+        {
+          year: "2020 - 2022",
+          title: "Immersing in Advanced Process & Python",
+          lessons: [
+            "Mastered Python for a Master’s thesis on catalytic reactions in fractal spaces.",
+            "Strengthened a data-driven mindset for approaching engineering problems.",
+            "Learned to pivot from purely theoretical models to real-world process optimization.",
+          ],
+        },
+        {
+          year: "2022",
+          title: "Operational Efficiency Internship",
+          lessons: [
+            "Applied data analysis to real-world labs at Eurofins, boosting profitability.",
+            "Developed a project tracker and budget workflows, learning the power of data transparency.",
+            "Realized the value of bridging technical solutions with business outcomes.",
+          ],
+        },
+        {
+          year: "2023",
+          title: "Scaling Dev & Data Pipelines",
+          lessons: [
+            "Automated daily production KPIs and advanced Python ETL at BASF, saving time and money.",
+            "Saw firsthand how data insights drive operational changes (OEE improvements, waste reduction).",
+            "Blended engineering fundamentals with data science for bigger impacts.",
+          ],
+        },
+        {
+          year: "2024",
+          title: "Platform Engineer & DevOps Mindset",
+          lessons: [
+            "Embraced Kubernetes, Terraform, and Helm for scalable platform solutions.",
+            "Began addressing alert fatigue and certificate management as pivotal devops problems.",
+            "Solidified a deeper understanding of the synergy between software and infrastructure.",
+          ],
+        },
+      ],
+    },
+  },
+  {
+    id: "L4",
+    title: "Hobbies & Interests",
+    image: "/images/iceberg_L4.jpg",
     width: 1000,
     height: 200,
     description: "A collection of activities that spark my joy and curiosity.",
@@ -53,43 +118,6 @@ export const icebergSegments = [
           level: "Weekly Climber",
           description:
             "Great physical challenge and problem-solving on the wall—improves focus and strength.",
-        },
-      ],
-    },
-  },
-  {
-    id: "L4",
-    title: "Personal Growth & Learnings",
-    image: "/images/iceberg_L4.jpg",
-    width: 1000,
-    height: 200,
-    description: "Key milestones and lessons learned along my journey.",
-    details: {
-      milestones: [
-        {
-          year: "2020",
-          title: "Dove into Python",
-          lessons: [
-            "Used Python for master thesis in Numerical Modeling",
-            "Learned the basics of Data Science",
-          ],
-        },
-        {
-          year: "2022",
-          title:
-            "Apprenticed to learn Chemical Extrusion of 3D-printing Filaments",
-          lessons: [
-            "Navigated complexity of single-screw extrusion",
-            "Familiarized with melt profiles and shear effect on plastics",
-          ],
-        },
-        {
-          year: "2024",
-          title: "Exploring Platform Engineering",
-          lessons: [
-            "Learning core technologies - Kubernetes, Helm, Terraform",
-            "Dove into AWS Management",
-          ],
         },
       ],
     },
