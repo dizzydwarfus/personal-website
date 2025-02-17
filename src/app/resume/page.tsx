@@ -37,58 +37,57 @@ export default function ResumePage() {
 
         {/* EXPERIENCE */}
         <section className="py-8 border-b border-gray-300">
-          <h2
-            className="text-2xl font-semibold text-teal-600 mb-6"
-            onClick={() => setExpanded(!expanded)}
-          >
+          <h2 className="text-2xl font-semibold text-teal-600 mb-6">
             Experience
           </h2>
-          {expanded && (
-            <div className="space-y-8">
-              {resumeData.experience.map((exp, idx) => (
-                <div key={idx} className="bg-white rounded-lg shadow-sm p-6">
-                  <div className="flex items-start gap-4 mb-3">
-                    {exp.logo && (
-                      <div className="relative w-16 h-16 flex-shrink-0">
-                        <Image
-                          src={exp.logo}
-                          alt={exp.company}
-                          fill
-                          style={{ objectFit: "contain" }}
-                        />
-                      </div>
-                    )}
-                    <div>
-                      <h3 className="text-lg font-bold text-teal-700">
-                        {exp.company}
-                      </h3>
-                      <p className="text-sm text-gray-500">{exp.location}</p>
-                    </div>
-                  </div>
 
-                  {/* Roles */}
-                  <ul className="border-l border-gray-200 ml-5 pl-4 space-y-6 relative">
-                    {exp.roles.map((role, rIdx) => (
-                      <li key={rIdx} className="relative">
-                        <div className="absolute -left-5 top-2 w-2 h-2 bg-teal-400 rounded-full"></div>
-                        <h4 className="text-md font-semibold text-teal-600">
-                          {role.title}
-                        </h4>
-                        <p className="text-xs text-gray-400 mb-2">
-                          {role.years}
-                        </p>
+          <div className="space-y-8">
+            {resumeData.experience.map((exp, idx) => (
+              <div key={idx} className="bg-white rounded-lg shadow-sm p-6">
+                <div className="flex items-start gap-4 mb-3">
+                  {exp.logo && (
+                    <div className="relative w-16 h-16 flex-shrink-0">
+                      <Image
+                        src={exp.logo}
+                        alt={exp.company}
+                        fill
+                        style={{ objectFit: "contain" }}
+                      />
+                    </div>
+                  )}
+                  <div>
+                    <h3 className="text-lg font-bold text-teal-700">
+                      {exp.company}
+                    </h3>
+                    <p className="text-sm text-gray-500">{exp.location}</p>
+                  </div>
+                </div>
+
+                {/* Roles */}
+                <ul className="border-l border-gray-200 ml-5 pl-4 space-y-6 relative">
+                  {exp.roles.map((role, rIdx) => (
+                    <li key={rIdx} className="relative">
+                      <div className="absolute -left-5 top-2 w-2 h-2 bg-teal-400 rounded-full"></div>
+                      <h4
+                        className="text-md font-semibold text-teal-600"
+                        onClick={() => setExpanded(!expanded)}
+                      >
+                        {role.title}
+                      </h4>
+                      <p className="text-xs text-gray-400 mb-2">{role.years}</p>
+                      {expanded && (
                         <ul className="list-disc list-inside text-sm space-y-1 text-gray-700">
                           {role.bulletPoints.map((bp, bpIdx) => (
                             <li key={bpIdx}>{bp}</li>
                           ))}
                         </ul>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-            </div>
-          )}
+                      )}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
         </section>
 
         {/* EDUCATION */}
