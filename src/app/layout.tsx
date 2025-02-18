@@ -1,6 +1,11 @@
 import "./globals.css";
-import "./fontawesome";
-import "./flagicons";
+import "@fortawesome/fontawesome-svg-core/styles.css";
+import "@module/flag-icons/css/flag-icons.min.css";
+import "@fontsource/roboto/300.css";
+import "@fontsource/roboto/400.css";
+import "@fontsource/roboto/500.css";
+import "@fontsource/roboto/700.css";
+
 import { Inter } from "next/font/google";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
