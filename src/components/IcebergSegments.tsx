@@ -285,13 +285,13 @@ export default function IcebergStack() {
                   <h4 className="text-lg font-semibold mb-2">
                     Core Values & Principles
                   </h4>
-                  {/* Horizontal scroll container */}
-                  <div className="flex overflow-x-auto space-x-4 py-2">
+                  {/* Vertical layout container */}
+                  <div className="flex flex-col max-h-[60vh] overflow-y-auto space-y-4 py-2">
                     {selectedSegment.details.values.map((val, idx) => (
                       <div
                         key={idx}
-                        className="min-w-[200px] bg-gradient-to-br from-blue-50 to-blue-100 
-                                  rounded-lg shadow p-4 flex-shrink-0 flex flex-col items-center text-gray-800"
+                        className="w-full bg-gradient-to-br from-blue-50 to-blue-100 
+                     rounded-lg shadow p-4 flex flex-col items-center text-gray-800"
                       >
                         {/* Icon */}
                         {val.icon && (
@@ -329,6 +329,8 @@ export default function IcebergStack() {
   );
 }
 
-//TODO: use expanders also in icerberg layers
+//TODO: use expanders also in icerberg layers - package the resume experience section in component to be reused here, do the same for projects section
 //TODO: bullet points for projects layer instead of .join.(", ")
 //TODO: populate values and principles
+//TODO: create videos of favourite guitar songs to be served when hovering over hobbies
+//TODO: create videos of climbing/basketball to be served when hovering over hobbies
