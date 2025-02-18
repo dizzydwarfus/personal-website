@@ -334,3 +334,4 @@ export default function IcebergStack() {
 //TODO: populate values and principles
 //TODO: create videos of favourite guitar songs to be served when hovering over hobbies
 //TODO: create videos of climbing/basketball to be served when hovering over hobbies
+//TODO: launchd to schedule cronjob for backing up public/data to "OneDrive/Desktop/Personal Website/"
