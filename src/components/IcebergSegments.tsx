@@ -329,4 +329,6 @@ export default function IcebergStack() {
   );
 }
 
-//TODO: move hobbies to L4 and personal growth to L3
+//TODO: use expanders also in icerberg layers
+//TODO: bullet points for projects layer instead of .join.(", ")
+//TODO: populate values and principles
