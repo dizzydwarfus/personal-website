@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import { StarCategory } from "@/app/interfaces";
-import CollapsibleStar from "@/components/CollapsibleStar";
+import CollapsibleStar from "@/components/anecdotes/CollapsibleStar";
 
 export default function AnecdotesPage() {
   // ---------- State + Fetch ----------

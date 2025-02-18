@@ -3,12 +3,12 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import { ResumeData } from "@/app/interfaces";
+import CollapsibleExperience from "@/components/resume/CollapsibleExperience";
+import CollapsibleProject from "@/components/resume/CollapsibleProjects";
 
 export default function ResumePage() {
   // ---------- State + Fetch ----------
   const [resumeData, setResumeData] = useState<ResumeData | null>(null);
-
-  const [expanded, setExpanded] = useState(false);
 
   useEffect(() => {
     fetch("/data/resume.json")
@@ -37,55 +37,12 @@ export default function ResumePage() {
 
         {/* EXPERIENCE */}
         <section className="py-8 border-b border-gray-300">
-          <h2 className="text-2xl font-semibold text-teal-600 mb-6">
+          <h2 className="text-2xl font-semibold text-teal-600 mb-4">
             Experience
           </h2>
-
           <div className="space-y-8">
             {resumeData.experience.map((exp, idx) => (
-              <div key={idx} className="bg-white rounded-lg shadow-sm p-6">
-                <div className="flex items-start gap-4 mb-3">
-                  {exp.logo && (
-                    <div className="relative w-16 h-16 flex-shrink-0">
-                      <Image
-                        src={exp.logo}
-                        alt={exp.company}
-                        fill
-                        style={{ objectFit: "contain" }}
-                      />
-                    </div>
-                  )}
-                  <div>
-                    <h3 className="text-lg font-bold text-teal-700">
-                      {exp.company}
-                    </h3>
-                    <p className="text-sm text-gray-500">{exp.location}</p>
-                  </div>
-                </div>
-
-                {/* Roles */}
-                <ul className="border-l border-gray-200 ml-5 pl-4 space-y-6 relative">
-                  {exp.roles.map((role, rIdx) => (
-                    <li key={rIdx} className="relative">
-                      <div className="absolute -left-5 top-2 w-2 h-2 bg-teal-400 rounded-full"></div>
-                      <h4
-                        className="text-md font-semibold text-teal-600"
-                        onClick={() => setExpanded(!expanded)}
-                      >
-                        {role.title}
-                      </h4>
-                      <p className="text-xs text-gray-400 mb-2">{role.years}</p>
-                      {expanded && (
-                        <ul className="list-disc list-inside text-sm space-y-1 text-gray-700">
-                          {role.bulletPoints.map((bp, bpIdx) => (
-                            <li key={bpIdx}>{bp}</li>
-                          ))}
-                        </ul>
-                      )}
-                    </li>
-                  ))}
-                </ul>
-              </div>
+              <CollapsibleExperience key={idx} experience={exp} />
             ))}
           </div>
         </section>
@@ -197,31 +154,10 @@ export default function ResumePage() {
           <h2 className="text-2xl font-semibold text-teal-600 mb-6">
             Featured Projects
           </h2>
+
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {resumeData.projects.map((proj, idx) => (
-              <div key={idx} className="bg-white rounded-lg shadow-sm p-6">
-                <h4 className="text-lg font-bold text-teal-700 mb-1">
-                  {proj.name}
-                </h4>
-                {proj.timeframe && (
-                  <p className="text-xs text-gray-400 mb-2">{proj.timeframe}</p>
-                )}
-                {proj.repoLink && (
-                  <a
-                    href={proj.repoLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-blue-500 hover:underline text-sm block mb-2"
-                  >
-                    View on GitHub
-                  </a>
-                )}
-                <ul className="list-disc list-inside text-sm space-y-1 text-gray-700">
-                  {proj.bulletPoints?.map((bp, bpIdx) => (
-                    <li key={bpIdx}>{bp}</li>
-                  ))}
-                </ul>
-              </div>
+              <CollapsibleProject key={idx} project={proj} />
             ))}
           </div>
         </section>
@@ -229,9 +165,3 @@ export default function ResumePage() {
     </main>
   );
 }
-
-// TODO: collapse everything
-// hover for main info
-// click for details
-
-// TODO: make links <a></a>
