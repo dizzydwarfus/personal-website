@@ -42,5 +42,4 @@ next-env.d.ts
 
 .turbo/
 archive
-public/data/resume.json
-public/data/star_anecdotes.json
+public/data/
