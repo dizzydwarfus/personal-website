@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-
+import Image from "@module/next/image";
 interface NavLink {
   name: string;
   path: string;
@@ -20,6 +20,17 @@ export default function Navbar() {
   return (
     <header className="w-full bg-transparent h-20 flex items-center mt-6">
       <nav className="w-full max-w-6xl mx-auto flex items-center justify-between px-4">
+        {/* Logo */}
+        <Link href="/">
+          <Image
+            src="/images/logo_v2.png"
+            width={120}
+            height={100}
+            alt="Logo"
+            className="w-28 cursor-pointer"
+          />
+        </Link>
+
         {/* Nav Links */}
         <ul className="flex items-center space-x-8">
           {navLinks.map((link) => {
