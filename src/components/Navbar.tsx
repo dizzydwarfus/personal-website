@@ -23,13 +23,13 @@ export default function Navbar() {
       <nav className="w-full max-w-6xl mx-auto flex items-center justify-between px-4">
         {/* Logo */}
         <Link href="/">
-          {/* <Image
+          <Image
             src="/images/logo_v2.png"
             width={120}
             height={100}
             alt="Logo"
             className="w-28 cursor-pointer"
-          /> */}
+          />
         </Link>
 
         {/* Nav Links */}
