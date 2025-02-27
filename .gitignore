@@ -42,4 +42,5 @@ next-env.d.ts
 
 .turbo/
 archive
-public/data/
+public/data/about_information.json
+public/data/star_anecdotes.json
