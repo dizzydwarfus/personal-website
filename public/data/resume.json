@@ -1,0 +1,348 @@
+{
+  "education": [
+    {
+      "school": "University of Groningen",
+      "degree": "M.S.c in Chemical Engineering",
+      "started": "September 2020",
+      "graduated": "August 2022",
+      "description": "Majored in Advanced Process Engineering with a thesis in numerical modeling of homogeneous catalytic reactions in fractals. Specialization: Advanced Process Engineering",
+      "logo": "/images/jobs/rijksuniversiteit_groningen.png"
+    },
+    {
+      "school": "University of Groningen",
+      "degree": "B.S.c in Chemical Engineering",
+      "started": "September 2017",
+      "graduated": "August 2020",
+      "description": "Participated in Honours Programme. (Bachelor’s (Honours) in Chemical Engineering)",
+      "logo": "/images/jobs/rijksuniversiteit_groningen.png"
+    },
+    {
+      "school": "University of Groningen",
+      "degree": "Summery School for Honours Programme",
+      "started": "July 2019",
+      "graduated": "August 2019",
+      "description": "Summer School for Honours Programme in Barcelona, investigating the social impact of superblocks (Superilles) in Barcelona.",
+      "logo": "/images/jobs/rijksuniversiteit_groningen.png"
+    }
+  ],
+  "experience": [
+    {
+      "company": "Just Eat Takeaway.com",
+      "logo": "/images/jobs/justeattakeaway.jpeg",
+      "location": "Enschede, Netherlands",
+      "roles": [
+        {
+          "title": "Platform Engineer",
+          "years": "September 2024 - Present",
+          "bulletPoints": [
+            "Learning Helm, terragrunt (terraform), git, kubernetes, aws iam.",
+            "Improved engineers experience on terragrunt/helmfile plans and applies by optimizing deployment instance of atlantis (pull request automation tool).",
+            "Reduced downstream errors in LoadBalancer reconciliation by implementing a certificate check before any helmfile deployments involving addition or modification of ingress hosts.",
+            "Increased engineer’s time for building by reducing alert fatigue from PagerDuty by lowering severity levels of non-critical alerts and removing non-actionable alerts."
+          ]
+        }
+      ]
+    },
+    {
+      "company": "BASF Forward AM",
+      "logo": "/images/jobs/basf_forward_am.jpeg",
+      "location": "Emmen, Netherlands",
+      "roles": [
+        {
+          "title": "Sales Operations Manager",
+          "years": "June 2023 - September 2024",
+          "bulletPoints": [
+            "Drastically increased CRM hygiene, as well as internal sales and business lines alignment by implementing an operating cadence with structured agendas and Tableau dashboards in Salesforce.",
+            "Reduced sales budget planning time to 3 workshop days by designing a budgeting process involving four phases: (1) Top-down business plan, (2) bottom-up forecasting, (3) initiative suggestions, (4) shortlisting of initiatives.",
+            "Achieved 90% reduction in finance team reporting labor by developing a Power BI model for margin deviation analysis automation.",
+            "Enhanced Tableau Cloud efficiency by increasing flow refresh frequency from daily to hourly using a Python script with Selenium, saving €20,000 annually on data management licenses.",
+            "Established a single point of truth in company data by consolidating 1400+ SKUs and 1000+ revenue accounts, enhancing global data governance.",
+            "Enabled hourly-refreshed monitoring of Lead Generation through to Customer Success by building 'North-Star' company-wide dashboards in Tableau, integrated in Salesforce.",
+            "Implemented a Salesforce CRM module in Apex and JavaScript for real-time sales forecasts, significantly reducing manual Excel tracking.",
+            "Designed and Implemented a Sales Target Allocation system allowing sales reps and directors to accurately track performance and bonuses."
+          ]
+        },
+        {
+          "title": "Process Engineer and Data Analyst Trainee",
+          "years": "December 2022 - June 2023",
+          "bulletPoints": [
+            "Massively reduced (96%) manual labor of data processing, saving €30,000+ per year by developing a Python ETL pipeline and daily Production KPIs app (visualized in Plotly/Power BI).",
+            "Boosted production to 60,000 kg/year with an OEE increase from 35% to 75%, saving €15,000+ by improving equipment efficiency.",
+            "Reduced production waste by 10% on highest throughput line (200,000 kg/yr) via root-cause analysis on diameter spread issues.",
+            "Redesigned KPI reporting pipeline for diverse business processes, automating data collection and analysis.",
+            "Enabled automatic generation of Packaging Label for 600+ products by building a master product database in Excel."
+          ]
+        }
+      ]
+    },
+    {
+      "company": "Eurofins GSC Services",
+      "logo": "/images/jobs/eurofins.webp",
+      "location": "Brussels, Belgium",
+      "roles": [
+        {
+          "title": "Permanent Improvement Programme Intern",
+          "years": "February 2022 - December 2022",
+          "bulletPoints": [
+            "Boosted revenue by €200,000 for a cluster of UK laboratories via a customer profitability model developed in Excel.",
+            "Developed a project tracker for 350+ projects, visualized in Power BI.",
+            "Translated data into actionable insights for margin and productivity enhancement.",
+            "Assisted in annual operational budgeting for multiple labs."
+          ]
+        }
+      ]
+    },
+    {
+      "company": "University of Groningen",
+      "logo": "/images/jobs/rijksuniversiteit_groningen.png",
+      "location": "Groningen, Netherlands",
+      "roles": [
+        {
+          "title": "Head Mentor/Teaching Assistant",
+          "years": "September 2020 - June 2022",
+          "bulletPoints": [
+            "Mentored 12 bachelor students, offering academic and technical guidance.",
+            "Conducted regular chemistry lessons and supervised lab courses."
+          ]
+        },
+        {
+          "title": "Student Lab Assistant",
+          "years": "January 2020 - February 2020",
+          "bulletPoints": [
+            "Assisted 120+ students in chemical sample analysis using NMR.",
+            "Provided expert insights on over 700 NMR samples."
+          ]
+        }
+      ]
+    },
+    {
+      "company": "Kroton Volleyball Association",
+      "logo": "/images/jobs/kroton_volleyball.png",
+      "location": "Groningen, Netherlands",
+      "roles": [
+        {
+          "title": "Treasurer for Beach Committee",
+          "years": "January 2021 - August 2022",
+          "bulletPoints": [
+            "Managed an annual budget exceeding €8000 for the Kroton Beach Volleyball Tournament.",
+            "Oversaw financial record-keeping, ensuring transparency in cash flows."
+          ]
+        }
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "name": "Kubernetes",
+      "roles": ["Platform Engineer @ JET"],
+      "projects": [],
+      "logo": "/images/kubernetes.jpg"
+    },
+    {
+      "name": "Terraform",
+      "roles": ["Platform Engineer @ JET"],
+      "projects": [],
+      "logo": "/images/Hashicorp-Terraform_onLight.png"
+    },
+    {
+      "name": "Helm",
+      "roles": ["Platform Engineer @ JET"],
+      "projects": [],
+      "logo": "/images/helm.svg"
+    },
+    {
+      "name": "Python",
+      "roles": [
+        "Process Engineer Trainee @ BASF Forward AM",
+        "Sales Operations Manager @ BASF Forward AM",
+        "Platform Engineer @ JET"
+      ],
+      "projects": [
+        "SEC Scraper",
+        "Investment Dashboard",
+        "NBA Data Scraper",
+        "General Chatbot",
+        "Salesforce-Data Integration",
+        "Expense Tracker"
+      ],
+      "logo": "/images/python.jpg"
+    },
+    {
+      "name": "HTML, CSS, Javascript",
+      "roles": [],
+      "projects": [
+        "Portfolio Website",
+        "Expense Tracker",
+        "Freelance Time Tracker"
+      ],
+      "logo": "/images/html_css_js.jpg"
+    },
+    {
+      "name": "Power BI",
+      "roles": [
+        "Operational Efficiency Intern @ Eurofins",
+        "Process Engineer Trainee @ BASF Forward AM",
+        "Sales Operations Manager @ BASF Forward AM"
+      ],
+      "projects": [],
+      "logo": "/images/powerBI.png"
+    },
+    {
+      "name": "Tableau",
+      "roles": ["Sales Operations Manager @ BASF Forward AM"],
+      "projects": [],
+      "logo": "/images/Tableau-From-Salesforce-Logo-COLOR-1.png"
+    },
+    {
+      "name": "Salesforce CRM",
+      "roles": ["Sales Operations Manager @ BASF Forward AM"],
+      "projects": [],
+      "logo": "/images/Salesforce-logo.jpg"
+    },
+    {
+      "name": "Docker/Podman",
+      "roles": ["Platform Engineer @ JET"],
+      "projects": [],
+      "logo": "/images/docker_podman.png"
+    },
+    {
+      "name": "MongoDB, Azure/MS SQL",
+      "projects": ["Freelance Time Tracker"],
+      "logo": "/images/database-solid.svg"
+    },
+    {
+      "name": "Seaborn, Plotly, Matplotlib",
+      "projects": [
+        "Sales Forecasting Model",
+        "Investment Analysis Platform",
+        "Expense Tracker WebApp with Flask"
+      ],
+      "logo": "/images/python_plotting_libraries.jpeg"
+    }
+  ],
+  "languages": [
+    {
+      "name": "English",
+      "level": "Native Speaker",
+      "countryCode": "GB"
+    },
+    {
+      "name": "Chinese",
+      "level": "Native Speaker",
+      "countryCode": "CN"
+    },
+    {
+      "name": "Malay",
+      "level": "Native Speaker",
+      "countryCode": "MY"
+    },
+    {
+      "name": "Cantonese",
+      "level": "Professional Speaker",
+      "countryCode": "HK"
+    },
+    {
+      "name": "Dutch",
+      "level": "A2 level",
+      "countryCode": "NL"
+    }
+  ],
+  "projects": [
+    {
+      "name": "Personal Website",
+      "repoLink": "https://github.com/dizzydwarfus/personal-website",
+      "liveLink": "http://localhost:3000/resume",
+      "timeframe": "February 2025 — Present",
+      "bulletPoints": [
+        "My website built with react/next.js for all things about me.",
+        "Templates and styling is done using tailwind css."
+      ]
+    },
+    {
+      "name": "Freelance Time Tracker",
+      "repoLink": "https://github.com/dizzydwarfus/invoicing-system",
+      "timeframe": "October 2024 — December 2024",
+      "bulletPoints": [
+        "A tool built using Flask with MongoDB backend to track clients, projects, and time logs with automatic invoice generation.",
+        "Templates and styling is done using tailwind css."
+      ]
+    },
+    {
+      "name": "Sales Forecasting Model",
+      "repoLink": "https://github.com/dizzydwarfus/sales-forecast",
+      "timeframe": "August 2024 — September 2024",
+      "bulletPoints": [
+        "A sales forecasting tool using facebook's Prophet model as underlying predictor.",
+        "Has built-in feature to authenticate with Salesforce Connected App for fetching forecast data to compare with Prophet Model forecast.",
+        "Sales data need to be supplied locally."
+      ]
+    },
+    {
+      "name": "Keyboard Inputs Tracker (Windows)",
+      "repoLink": "https://github.com/dizzydwarfus/inputs-tracker",
+      "timeframe": "August 2024 — August 2024",
+      "bulletPoints": [
+        "Track keys pressed on keyboard with a python-tkinter based GUI app."
+      ]
+    },
+    {
+      "name": "Chatbot with RAG",
+      "repoLink": "https://github.com/dizzydwarfus/chatbot-langchain",
+      "timeframe": "May 2024 — June 2024",
+      "bulletPoints": [
+        "Chatbot developed using streamlit for UI leveraging OpenAI Models and Pinecone as vector database for RAG implementation.",
+        "Can be tested locally with OpenAI API key and Pinecone API key."
+      ]
+    },
+    {
+      "name": "NBA Data Scraper Package (PyPI)",
+      "repoLink": "https://pypi.org/project/nba-data-scraper/#description",
+      "timeframe": "October 2023 — January 2024",
+      "bulletPoints": [
+        "A tool built in Python to scrape a basketball website for shot data from NBA games (using BeautifulSoup).",
+        "Tested and published to PyPI using GitHub actions and poetry."
+      ]
+    },
+    {
+      "name": "Investment Analysis Platform",
+      "repoLink": "https://sec-scraper.azurewebsites.net/SEC_Scraper",
+      "timeframe": "October 2022 — Present",
+      "bulletPoints": [
+        "Developed a Python-based website (streamlit) for investment analysis using financial reporting API and SEC Database.",
+        "SEC Filings data is stored in MongoDB, retrievable via a built-in SEC Scraper.",
+        "Included a DCF calculator with custom inputs based on DCF parameters.",
+        "Hosted on Azure App Service (F1 tier) with CI/CD (GitHub Actions) - https://sec-scraper.azurewebsites.net/SEC_Scraper"
+      ]
+    },
+    {
+      "name": "NBA API",
+      "repoLink": "https://github.com/dizzydwarfus/nba-api",
+      "timeframe": "July 2023 — September 2023",
+      "bulletPoints": [
+        "Designed a database (MS SQL) to store NBA shots data (+4.5 million rows self-scraped) — shots taken, teams, players, positions, team arenas, and games played from 2000-2023.",
+        "Developed endpoints using FastAPI to access the database."
+      ]
+    },
+    {
+      "name": "Expense Tracker WebApp with Flask",
+      "repoLink": "https://github.com/dizzydwarfus/expense-tracker",
+      "timeframe": "March 2023 — May 2023",
+      "bulletPoints": [
+        "Login functionality for user to add/edit/remove expenses.",
+        "Dashboard for visualizing expenses.",
+        "All data stored in an Azure SQL Database."
+      ]
+    },
+    {
+      "name": "Personal Projects",
+      "repoLink": "https://github.com/dizzydwarfus/Personal_Projects",
+      "timeframe": "Various",
+      "bulletPoints": [
+        "Practiced machine learning on UCSI datasets with Python libraries.",
+        "Experimenting with different tools (sympy, numpy, scipy, airflow, huggingface, langchain, openai, sklearn).",
+        "Grocery API Integration: Tracked grocery bonuses and generated recipe-based shopping lists.",
+        "Heat Transfer Modelling: Conducted numerical modeling of 1D/2D heat transfer using Finite Difference Analysis."
+      ]
+    }
+  ]
+}
