@@ -9,6 +9,7 @@ on:
     inputs:
       app_name:
         description: "app name which corresponds to image name, also the repo name in ecr"
+        default: "personal-website"
         required: true
         type: string
       aws_region:
