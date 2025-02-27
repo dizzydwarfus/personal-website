@@ -27,6 +27,7 @@ jobs:
   build-and-push:
     if: |
       github.event_name == 'push' ||
+      github.event_name == 'pull_request' ||
       (github.event_name == 'issue_comment' && github.event.issue.pull_request && contains(github.event.comment.body, 'build pr')) ||
       github.event_name == 'workflow_dispatch'
 
