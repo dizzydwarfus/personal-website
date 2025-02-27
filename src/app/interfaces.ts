@@ -59,6 +59,7 @@ export interface Value {
 export interface Milestone {
   year: string;
   title: string;
+  color?: string;
   lessons?: string[];
 }
 
