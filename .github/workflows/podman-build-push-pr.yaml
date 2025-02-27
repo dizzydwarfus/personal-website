@@ -66,16 +66,12 @@ jobs:
           export ECR_LOGIN_CMD=$(aws ecr get-login-password --region ${{ env.AWS_REGION }})
           echo $ECR_LOGIN_CMD | podman login --username AWS --password-stdin $ECR_URI
 
-      - name: ECR Log in Status
+      - name: Build and Tag the Image with Podman
         run: |
-          echo ${{ steps.ecr_login.conclusion == 'success' && 'Successfully Logged in' || steps.ecr_login.conclusion == 'failure' && 'Log in unsuccessful' }}
-
-      # - name: Build and Tag the Image with Podman
-      #   run: |
-      #     export AWS_ACCOUNT_ID=$(aws sts get-caller-identity --query "Account" --output text)
-      #     export ECR_URI="$AWS_ACCOUNT_ID.dkr.ecr.${{ env.AWS_REGION }}.amazonaws.com"
-      #     podman build -t ${{ env.APP_NAME }} .
-      #     podman tag ${{ env.APP_NAME }}:pr-${{ env.PR_NUM }} $ECR_URI/${{ env.APP_NAME }}:pr-${{ env.PR_NUM }}
+          export AWS_ACCOUNT_ID=$(aws sts get-caller-identity --query "Account" --output text)
+          export ECR_URI="$AWS_ACCOUNT_ID.dkr.ecr.${{ env.AWS_REGION }}.amazonaws.com"
+          podman build -t ${{ env.APP_NAME }} .
+          podman tag ${{ env.APP_NAME }}:pr-${{ env.PR_NUM }} $ECR_URI/${{ env.APP_NAME }}:pr-${{ env.PR_NUM }}
 
       # - name: Push the Image to Amazon ECR
       #   run: |
