@@ -70,7 +70,7 @@ jobs:
         run: |
           export AWS_ACCOUNT_ID=$(aws sts get-caller-identity --query "Account" --output text)
           export ECR_URI="$AWS_ACCOUNT_ID.dkr.ecr.${{ env.AWS_REGION }}.amazonaws.com"
-          podman build -t ${{ env.APP_NAME }} .
+          podman build -t ${{ env.APP_NAME }}:pr-${{ env.PR_NUM }} .
           podman tag ${{ env.APP_NAME }}:pr-${{ env.PR_NUM }} $ECR_URI/${{ env.APP_NAME }}:pr-${{ env.PR_NUM }}
           echo $ECR_URI/${{ env.APP_NAME }}:pr-${{ env.PR_NUM }}
 
