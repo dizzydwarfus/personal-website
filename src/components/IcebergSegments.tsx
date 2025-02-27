@@ -5,6 +5,7 @@ import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { icebergSegments } from "@public/data/segmentsData";
 import { Segment, ResumeData } from "@/app/interfaces";
+import CollapsibleExperience from "@/components/resume/CollapsibleExperience";
 
 export default function IcebergStack() {
   const [selectedSegment, setSelectedSegment] = useState<Segment | null>(null);
@@ -74,7 +75,7 @@ export default function IcebergStack() {
               transition={{ duration: 0.3 }}
               onClick={(e) => e.stopPropagation()}
             >
-              <h3 className="text-2xl font-bold mb-4">
+              <h3 className="text-2xl text-teal-600 font-bold mb-4">
                 {selectedSegment.title}
               </h3>
 
@@ -85,52 +86,19 @@ export default function IcebergStack() {
 
               {selectedSegment.resumeKey === "experience" && (
                 <div className="max-h-[70vh] overflow-y-auto mt-4">
-                  <h4 className="text-lg font-semibold mb-2">Experience</h4>
-                  {/* If resumeData is null, bail out or return null */}
                   {!resumeData ? (
                     <p>Loading experience data...</p>
                   ) : (
-                    <ul className="relative border-l border-gray-300 ml-4 pl-4">
-                      {resumeData[selectedSegment.resumeKey].map(
-                        (experience, idx) => (
-                          <li key={idx} className="mb-6 ml-2 relative">
-                            {/* The timeline bullet circle */}
-                            <div className="absolute -left-3 top-0 w-2 h-2 rounded-full bg-pink-500"></div>
-
-                            {/* Row for experience logo + details */}
-                            <div className="flex items-start gap-4">
-                              {/* Logo (if any) */}
-                              {experience.logo && (
-                                <div className="relative w-12 h-12 flex-shrink-0">
-                                  <Image
-                                    src={experience.logo}
-                                    alt={`${experience.company} logo`}
-                                    fill
-                                    style={{ objectFit: "contain" }}
-                                  />
-                                </div>
-                              )}
-
-                              {/* Textual details */}
-                              <ul className="border-l border-gray-200 ml-5 pl-4 space-y-6 relative">
-                                {experience.roles.map((role, idx) => (
-                                  <li key={idx} className="relative">
-                                    <div>
-                                      <h5 className="text-md font-bold text-gray-800">
-                                        {role.title}
-                                      </h5>
-                                      <div className="text-sm text-gray-500">
-                                        {role.years}
-                                      </div>
-                                    </div>
-                                  </li>
-                                ))}
-                              </ul>
-                            </div>
-                          </li>
-                        )
-                      )}
-                    </ul>
+                    <div className="space-y-8">
+                      {resumeData[selectedSegment.resumeKey].map((exp, idx) => (
+                        <div
+                          key={idx}
+                          className="bg-teal-100 rounded-lg shadow-sm p-2"
+                        >
+                          <CollapsibleExperience key={idx} experience={exp} />
+                        </div>
+                      ))}
+                    </div>
                   )}
                 </div>
               )}
@@ -204,9 +172,6 @@ export default function IcebergStack() {
 
               {selectedSegment.details?.milestones && (
                 <div className="mt-4">
-                  <h4 className="text-lg font-semibold mb-2">
-                    Personal Growth & Learnings
-                  </h4>
                   <ul className="max-h-[60vh] overflow-y-auto relative border-l border-gray-300 ml-4 pl-4">
                     {selectedSegment.details.milestones.map((mile, idx) => (
                       <li key={idx} className="mb-6 ml-2">
