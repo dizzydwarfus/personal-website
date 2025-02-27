@@ -1,0 +1,82 @@
+name: Build & Push to AWS ECR with Podman
+
+on:
+  pull_request:
+  issue_comment:
+    types:
+      - created
+  workflow_dispatch:
+    inputs:
+      app_name:
+        description: "app name which corresponds to image name, also the repo name in ecr"
+        required: true
+        type: string
+      aws_region:
+        description: "aws region that ecr is in"
+        default: "eu-north-1"
+        required: true
+        type: string
+      aws_account_id:
+        description: "aws account id that ecr is in"
+        default: "545009859307"
+        required: true
+        type: string
+
+jobs:
+  build-and-push:
+    if: |
+      github.event_name == 'push' ||
+      (github.event_name == 'issue_comment' && github.event.issue.pull_request && contains(github.event.comment.body, 'build pr')) ||
+      github.event_name == 'workflow_dispatch'
+
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
+    env:
+      AWS_ACCOUNT_ID: ${{ inputs.aws_account_id }}
+      AWS_REGION: ${{ inputs.aws_region || 'eu-north-1' }}
+      APP_NAME: ${{ inputs.app_name }}
+      PR_NUM: ${{ github.event.issue.number || github.event.pull_request.number || 'latest' }}
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Install Podman
+        run: |
+          sudo apt update
+          sudo apt install -y podman
+          podman --version
+
+      - name: Configure AWS OIDC Authentication
+        id: aws-auth
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: arn:aws:iam::${{ env.AWS_ACCOUNT_ID }}:role/github-actions
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: Login to Amazon ECR using Podman
+        id: ecr_login
+        run: |
+          export AWS_ACCOUNT_ID=$(aws sts get-caller-identity --query "Account" --output text)
+          export ECR_URI="$AWS_ACCOUNT_ID.dkr.ecr.${{ env.AWS_REGION }}.amazonaws.com"
+          export ECR_LOGIN_CMD=$(aws ecr get-login-password --region ${{ env.AWS_REGION }})
+          echo $ECR_LOGIN_CMD | podman login --username AWS --password-stdin $ECR_URI
+
+      - name: ECR Log in Status
+        run: |
+          echo ${{ steps.ecr_login.conclusion == 'success' && 'Successfully Logged in' || steps.ecr_login.conclusion == 'failure' && 'Log in unsuccessful' }}
+
+      # - name: Build and Tag the Image with Podman
+      #   run: |
+      #     export AWS_ACCOUNT_ID=$(aws sts get-caller-identity --query "Account" --output text)
+      #     export ECR_URI="$AWS_ACCOUNT_ID.dkr.ecr.${{ env.AWS_REGION }}.amazonaws.com"
+      #     podman build -t ${{ env.APP_NAME }} .
+      #     podman tag ${{ env.APP_NAME }}:pr-${{ env.PR_NUM }} $ECR_URI/${{ env.APP_NAME }}:pr-${{ env.PR_NUM }}
+
+      # - name: Push the Image to Amazon ECR
+      #   run: |
+      #     export AWS_ACCOUNT_ID=$(aws sts get-caller-identity --query "Account" --output text)
+      #     export ECR_URI="$AWS_ACCOUNT_ID.dkr.ecr.${{ env.AWS_REGION }}.amazonaws.com"
+      #     podman push $ECR_URI/${{ env.APP_NAME }}:pr-${{ env.PR_NUM }}
