@@ -75,6 +75,7 @@ jobs:
         with:
           role-to-assume: ${{ env.MAIN_ROLE_ARN }}
           aws-region: ${{ env.AWS_REGION }}
+
       - name: Assume Role in Prod AWS Account (S3 Access)
         id: assume-prod
         run: |
@@ -90,12 +91,21 @@ jobs:
           echo "::add-mask::$(echo $CREDS | jq -r '.AccessKeyId')"
           echo "::add-mask::$(echo $CREDS | jq -r '.SecretAccessKey')"
           echo "::add-mask::$(echo $CREDS | jq -r '.SessionToken')"
+
       # bucket is in "prod" account while ecr in "main" - need to assume role in prod with role in main > source=main; target=prod; principal=main<role-arn>
       - name: Sync S3 Public Assets to `public/`
         run: |
           mkdir -p public
           aws s3 sync s3://${{ env.S3_BUCKET }}/${{ env.S3_FOLDER }}/ public/
           ls -la
+
+      # reauthenticate for ecr login - maybe create oidc role in prod with necessary role without role chaining
+      - name: Assume Role in Main AWS Account
+        id: reassume-main
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ env.MAIN_ROLE_ARN }}
+          aws-region: ${{ env.AWS_REGION }}
 
       - name: Login to Amazon ECR using Podman
         id: ecr_login
