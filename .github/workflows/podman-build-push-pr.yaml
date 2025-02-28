@@ -87,12 +87,15 @@ jobs:
           echo "AWS_ACCESS_KEY_ID=$(echo $CREDS | jq -r '.AccessKeyId')" >> $GITHUB_ENV
           echo "AWS_SECRET_ACCESS_KEY=$(echo $CREDS | jq -r '.SecretAccessKey')" >> $GITHUB_ENV
           echo "AWS_SESSION_TOKEN=$(echo $CREDS | jq -r '.SessionToken')" >> $GITHUB_ENV
-
+          echo "::add-mask::$(echo $CREDS | jq -r '.AccessKeyId')"
+          echo "::add-mask::$(echo $CREDS | jq -r '.SecretAccessKey')"
+          echo "::add-mask::$(echo $CREDS | jq -r '.SessionToken')"
       # bucket is in "prod" account while ecr in "main" - need to assume role in prod with role in main > source=main; target=prod; principal=main<role-arn>
       - name: Sync S3 Public Assets to `public/`
         run: |
           mkdir -p public
           aws s3 sync s3://${{ env.S3_BUCKET }}/${{ env.S3_FOLDER }}/ public/
+          ls -la
 
       # - name: Login to Amazon ECR using Podman
       #   id: ecr_login
