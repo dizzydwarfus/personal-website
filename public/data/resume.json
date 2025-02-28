@@ -38,7 +38,7 @@
             "Learning Helm, terragrunt (terraform), git, kubernetes, aws iam.",
             "Improved engineers experience on terragrunt/helmfile plans and applies by optimizing deployment instance of atlantis (pull request automation tool).",
             "Reduced downstream errors in LoadBalancer reconciliation by implementing a certificate check before any helmfile deployments involving addition or modification of ingress hosts.",
-            "Increased engineer’s time for building by reducing alert fatigue from PagerDuty by lowering severity levels of non-critical alerts and removing non-actionable alerts."
+            "Reduced alert fatigue from PagerDuty by lowering severity levels of non-critical alerts and removing non-actionable alerts."
           ]
         }
       ]
