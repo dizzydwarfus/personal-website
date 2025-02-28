@@ -39,9 +39,9 @@ export default function Navbar() {
               <li key={link.name}>
                 <Link
                   href={link.path}
-                  className={`text-white text-lg relative hover:text-pink-500 transition
-                    ${isActive ? "text-pink-500 after:w-full" : ""}
-                    after:absolute after:bottom-[-6px] after:left-0 after:h-[3px] after:bg-pink-500 after:w-0 hover:after:w-full after:transition-all`}
+                  className={`text-white text-lg relative hover:text-teal-500 transition
+                    ${isActive ? "text-teal-500 after:w-full" : ""}
+                    after:absolute after:bottom-[-6px] after:left-0 after:h-[3px] after:bg-teal-500 after:w-0 hover:after:w-full after:transition-all`}
                 >
                   {link.name}
                 </Link>
