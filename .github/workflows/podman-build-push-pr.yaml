@@ -1,7 +1,7 @@
 name: Build & Push to AWS ECR with Podman
 
 on:
-  # pull_request:
+  pull_request:
   issue_comment:
     types:
       - created
@@ -117,5 +117,3 @@ jobs:
       #     export ECR_URI="$AWS_ACCOUNT_ID.dkr.ecr.${{ env.AWS_REGION }}.amazonaws.com"
       #     podman push $ECR_URI/${{ env.APP_NAME }}:pr-${{ env.PR_NUM }}
       #     echo Successfully pushed to $ECR_URI/${{ env.APP_NAME }}:pr-${{ env.PR_NUM }}
-
-      
