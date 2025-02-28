@@ -1,10 +1,9 @@
 name: Build & Push to AWS ECR with Podman
 
 on:
-  pull_request:
-  issue_comment:
-    types:
-      - created
+  push:
+    branches:
+      - main
   workflow_dispatch:
     inputs:
       app_name:
@@ -39,9 +38,8 @@ on:
 jobs:
   build-and-push:
     if: |
-      (github.event_name == 'issue_comment' && github.event.issue.pull_request && contains(github.event.comment.body, 'build pr')) ||
       github.event_name == 'workflow_dispatch' ||
-      github.event_name == 'push' || github.event_name == 'pull_request'
+      github.event_name == 'push'
     runs-on: ubuntu-latest
     permissions:
       id-token: write
@@ -50,8 +48,7 @@ jobs:
       AWS_ACCOUNT_ID: ${{ inputs.aws_account_id || '545009859307' }}
       AWS_REGION: ${{ inputs.aws_region || 'eu-north-1' }}
       APP_NAME: ${{ inputs.app_name || 'personal-website' }}
-      # PR_NUM: ${{ github.event.issue.number || github.event.pull_request.number || 'latest' }}
-      PR_NUM: ${{ github.event.issue.number || 'latest' }}
+      PR_NUM: "latest"
       S3_BUCKET_ACCOUNT_ID: ${{ inputs.s3_bucket_account_id || '216989125379' }}
       S3_BUCKET: ${{ inputs.s3_bucket || '216989125379-personal-website-assets' }}
       S3_FOLDER: ${{ inputs.s3_folder || 'public' }}
@@ -97,7 +94,6 @@ jobs:
         run: |
           mkdir -p public
           aws s3 sync s3://${{ env.S3_BUCKET }}/${{ env.S3_FOLDER }}/ public/
-          ls -la -R
 
       # reauthenticate for ecr login - maybe create oidc role in prod with necessary role without role chaining
       - name: Assume Role in Main AWS Account
@@ -119,13 +115,13 @@ jobs:
         run: |
           export AWS_ACCOUNT_ID=$(aws sts get-caller-identity --query "Account" --output text)
           export ECR_URI="$AWS_ACCOUNT_ID.dkr.ecr.${{ env.AWS_REGION }}.amazonaws.com"
-          podman build -t ${{ env.APP_NAME }}:pr-${{ env.PR_NUM }} .
-          podman tag ${{ env.APP_NAME }}:pr-${{ env.PR_NUM }} $ECR_URI/${{ env.APP_NAME }}:pr-${{ env.PR_NUM }}
-          echo Successfully built $ECR_URI/${{ env.APP_NAME }}:pr-${{ env.PR_NUM }}!
+          podman build -t ${{ env.APP_NAME }}:${{ env.PR_NUM }} .
+          podman tag ${{ env.APP_NAME }}:${{ env.PR_NUM }} $ECR_URI/${{ env.APP_NAME }}:${{ env.PR_NUM }}
+          echo Successfully built $ECR_URI/${{ env.APP_NAME }}:${{ env.PR_NUM }}!
 
       - name: Push the Image to Amazon ECR
         run: |
           export AWS_ACCOUNT_ID=$(aws sts get-caller-identity --query "Account" --output text)
           export ECR_URI="$AWS_ACCOUNT_ID.dkr.ecr.${{ env.AWS_REGION }}.amazonaws.com"
-          podman push $ECR_URI/${{ env.APP_NAME }}:pr-${{ env.PR_NUM }}
-          echo Successfully pushed to $ECR_URI/${{ env.APP_NAME }}:pr-${{ env.PR_NUM }}
+          podman push $ECR_URI/${{ env.APP_NAME }}:${{ env.PR_NUM }}
+          echo Successfully pushed to $ECR_URI/${{ env.APP_NAME }}:${{ env.PR_NUM }}
