@@ -54,7 +54,7 @@ jobs:
       PR_NUM: ${{ github.event.issue.number || 'latest' }}
       S3_BUCKET_ACCOUNT_ID: ${{ inputs.s3_bucket_account_id || '216989125379' }}
       S3_BUCKET: ${{ inputs.s3_bucket || '216989125379-personal-website-assets' }}
-      S3_FOLDER: ${{ inputs.s3_folder || 'public/' }}
+      S3_FOLDER: ${{ inputs.s3_folder || 'public' }}
       MAIN_ROLE_ARN: "arn:aws:iam::${{ inputs.aws_account_id || '545009859307' }}:role/github-actions"
       PROD_ROLE_ARN: "arn:aws:iam::${{ inputs.s3_bucket_account_id || '216989125379' }}:role/github-s3-prod-access"
 
