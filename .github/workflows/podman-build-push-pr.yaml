@@ -1,7 +1,7 @@
 name: Build & Push to AWS ECR with Podman
 
 on:
-  pull_request:
+  # pull_request:
   issue_comment:
     types:
       - created
@@ -26,10 +26,10 @@ on:
 jobs:
   build-and-push:
     if: |
-      github.event_name == 'push' ||
-      github.event_name == 'pull_request' ||
       (github.event_name == 'issue_comment' && github.event.issue.pull_request && contains(github.event.comment.body, 'build pr')) ||
       github.event_name == 'workflow_dispatch'
+    # github.event_name == 'push' ||
+    # github.event_name == 'pull_request' ||
 
     runs-on: ubuntu-latest
     permissions:
@@ -39,7 +39,8 @@ jobs:
       AWS_ACCOUNT_ID: ${{ inputs.aws_account_id || '545009859307' }}
       AWS_REGION: ${{ inputs.aws_region || 'eu-north-1' }}
       APP_NAME: ${{ inputs.app_name || 'personal-website' }}
-      PR_NUM: ${{ github.event.issue.number || github.event.pull_request.number || 'latest' }}
+      # PR_NUM: ${{ github.event.issue.number || github.event.pull_request.number || 'latest' }}
+      PR_NUM: ${{ github.event.issue.number || 'latest' }}
 
     steps:
       - name: Checkout Repository
