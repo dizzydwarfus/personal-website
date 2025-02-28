@@ -40,10 +40,9 @@ jobs:
   build-and-push:
     if: |
       (github.event_name == 'issue_comment' && github.event.issue.pull_request && contains(github.event.comment.body, 'build pr')) ||
-      github.event_name == 'workflow_dispatch'
-    # github.event_name == 'push' ||
+      github.event_name == 'workflow_dispatch' ||
+      github.event_name == 'push'
     # github.event_name == 'pull_request' ||
-
     runs-on: ubuntu-latest
     permissions:
       id-token: write
@@ -118,3 +117,5 @@ jobs:
       #     export ECR_URI="$AWS_ACCOUNT_ID.dkr.ecr.${{ env.AWS_REGION }}.amazonaws.com"
       #     podman push $ECR_URI/${{ env.APP_NAME }}:pr-${{ env.PR_NUM }}
       #     echo Successfully pushed to $ECR_URI/${{ env.APP_NAME }}:pr-${{ env.PR_NUM }}
+
+      
