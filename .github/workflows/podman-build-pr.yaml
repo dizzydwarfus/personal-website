@@ -65,7 +65,6 @@ jobs:
 
       - name: Build with Podman
         run: |
-          podman build --platform linux/arm64 -t ${{ env.APP_NAME }}:pr-${{ env.PR_NUM }} .
           podman buildx create --name multiarch
           podman buildx use multiarch
           podman buildx inspect --bootstrap
