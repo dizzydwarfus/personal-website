@@ -65,7 +65,6 @@ jobs:
 
       - name: Build with Podman
         run: |
-          podman buildx build \
-            --platform=linux/amd64,linux/arm64 \
-            -t${{ env.APP_NAME }}:pr-${{ env.PR_NUM }} \
-            .
+          podman build \
+          -t ${{ env.APP_NAME }}:pr-${{ env.PR_NUM }} \
+          .
