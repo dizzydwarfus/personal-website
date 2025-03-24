@@ -125,3 +125,7 @@ jobs:
           export ECR_URI="$AWS_ACCOUNT_ID.dkr.ecr.${{ env.AWS_REGION }}.amazonaws.com"
           podman push $ECR_URI/${{ env.APP_NAME }}:${{ env.PR_NUM }}
           echo Successfully pushed to $ECR_URI/${{ env.APP_NAME }}:${{ env.PR_NUM }}
+
+      - name: Trigger Service Redeployment
+        run: |
+          aws ecs update-service --cluster personal-cluster --service main-personal-service --force-new-deployment --region ${{ env.AWS_REGION }}
