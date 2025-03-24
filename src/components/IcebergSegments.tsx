@@ -42,26 +42,33 @@ export default function IcebergStack() {
           <motion.div
             key={segment.id}
             className="cursor-pointer p-0 m-0"
-            whileHover={{ scaleX: 1, scaleY: 0.95 }}
+            whileHover={{
+              scale: 1.02,
+            }}
             onClick={() => openModal(segment)}
           >
-            <Image
-              src={segment.image}
-              alt={segment.title}
-              width={segment.width}
-              height={segment.height}
-              unoptimized
-              className="max-w-full h-auto p-0 m-0"
-            />
+            <div className="relative">
+              <Image
+                src={segment.image}
+                alt={segment.title}
+                width={segment.width}
+                height={segment.height}
+                unoptimized
+                className="max-w-full h-auto drop-shadow-xl opacity-90 brightness-95 transition-all"
+              />
+              <div className="absolute inset-0 flex items-center justify-center bg-black/40 backdrop-blur-sm opacity-0 hover:opacity-100 transition-opacity duration-300 text-white text-sm font-semibold">
+                {segment.title}
+              </div>
+            </div>
           </motion.div>
         ))}
       </div>
 
       {/* Modal Overlay */}
-      <AnimatePresence>
-        {selectedSegment && (
+      {selectedSegment && (
+        <AnimatePresence>
           <motion.div
-            className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50"
+            className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 bg-white/30 backdrop-blur-md rounded-xl p-6 shadow-xl border border-white/10"
             initial={{ opacity: 0 }}
             animate={{ scale: 1.0, opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -288,8 +295,8 @@ export default function IcebergStack() {
               </button>
             </motion.div>
           </motion.div>
-        )}
-      </AnimatePresence>
+        </AnimatePresence>
+      )}
     </section>
   );
 }
