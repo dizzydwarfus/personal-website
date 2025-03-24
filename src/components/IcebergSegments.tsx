@@ -301,9 +301,7 @@ export default function IcebergStack() {
   );
 }
 
-//TODO: use expanders also in icerberg layers - package the resume experience section in component to be reused here, do the same for projects section
 //TODO: bullet points for projects layer instead of .join.(", ")
 //TODO: populate values and principles
 //TODO: create videos of favourite guitar songs to be served when hovering over hobbies
 //TODO: create videos of climbing/basketball to be served when hovering over hobbies
-//TODO: launchd to schedule cronjob for backing up public/data to "OneDrive/Desktop/Personal Website/"
