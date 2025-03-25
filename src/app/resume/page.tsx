@@ -28,7 +28,7 @@ export default function ResumePage() {
 
   // ---------- Main Layout ----------
   return (
-    <main className="min-h-screen text-gray-800 py-12 px-4">
+    <main className="min-h-screen text-gray-800 py-20 px-4">
       <div className="max-w-6xl mx-auto space-y-12">
         {/* Header */}
         <div className="text-center mb-8">
