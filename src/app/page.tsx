@@ -1,10 +1,10 @@
-'use client';
+"use client";
 
-import IcebergSegments from '@/components/IcebergSegments';
+import IcebergSegments from "@/components/IcebergSegments";
 
 export default function HomePage() {
   return (
-    <main>
+    <main className="pt-20">
       <IcebergSegments />
     </main>
   );

@@ -28,20 +28,78 @@ export default function IcebergStack() {
 
   return (
     <section className="p-0 m-0">
-      <div className="text-center my-8">
-        <h2 className="text-teal-400 text-4xl font-bold">
-          Lian&apos;s Iceberg
-        </h2>
-        <p className="text-gray-600">
-          Click on a slice to reveal more beneath the surface
-        </p>
-      </div>
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+      >
+        <div className="bg-white/60 dark:bg-black/60 backdrop-blur-lg rounded-2xl shadow-xl p-6 md:p-10 max-w-3xl mx-auto my-10">
+          <h2 className="text-4xl font-bold text-teal-500 mb-4 text-center">
+            Beneath the Surface
+          </h2>
+          <p className="text-gray-800 dark:text-gray-100 italic mb-4 text-center">
+            &quot;Most of what defines us lies hidden from plain view — shaped
+            by late nights of learning, quiet persistence, side projects born
+            out of curiosity, and the stories we never quite tell aloud.&quot;
+          </p>
+          <div className="text-gray-500 md:text-base">
+            This completely AI generated iceberg isn&apos;t just a graphic —
+            it&apos;s a layered reflection of who I am.
+            <br />
+            <div className="space-y-4 mt-6">
+              <div className="flex items-start space-x-3">
+                <Image
+                  src="/images/iceberg_layers/iceberg_top.png"
+                  alt="Iceberg Tip"
+                  width={28}
+                  height={28}
+                  className="mt-1 flex-shrink-0"
+                />
+                <p className="text-gray-500">
+                  <span className="font-semibold text-teal-600">
+                    The top half:
+                  </span>{" "}
+                  My roles, education, and work experience.
+                </p>
+              </div>
 
+              <div className="flex items-start space-x-3">
+                <Image
+                  src="/images/iceberg_layers/iceberg_bottom.png"
+                  alt="Iceberg Bottom"
+                  width={28}
+                  height={28}
+                  className="mt-1 flex-shrink-0"
+                />
+                <p className="text-gray-500">
+                  <span className="font-semibold text-teal-600">
+                    The bottom half:
+                  </span>{" "}
+                  The late-night debug sessions. The pastimes I have after work.
+                  The values I hold and the quiet lessons life has taught me.
+                </p>
+              </div>
+            </div>
+            <p className="text-gray-500 md:text-base mt-4">
+              <span className="text-teal-600 font-semibold animate-pulse">
+                Click on any layer
+              </span>{" "}
+              to dive deeper into the things that have shaped me — from platform
+              engineering to playing fingerstyle guitar, from chemical processes
+              to dashboards built as I stumble through my learning path.
+            </p>
+          </div>
+        </div>
+      </motion.div>
       <div className="flex flex-col items-center justify-start p-0 m-0">
-        {icebergSegments.map((segment) => (
+        {icebergSegments.map((segment, index) => (
           <motion.div
             key={segment.id}
             className="cursor-pointer p-0 m-0"
+            initial={{ opacity: 0, y: 30, scale: 0.98 }}
+            whileInView={{ opacity: 1, y: 0, scale: 1 }}
+            viewport={{ once: true, amount: 0.4 }}
+            transition={{ duration: 0.6, delay: index * 0.15, ease: "easeOut" }}
             whileHover={{
               scale: 1.02,
             }}
