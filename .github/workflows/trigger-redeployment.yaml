@@ -58,6 +58,13 @@ jobs:
             --query "Credentials" \
             --output json)
 
+          echo "AWS_ACCESS_KEY_ID=$(echo $CREDS | jq -r '.AccessKeyId')" >> $GITHUB_ENV
+          echo "AWS_SECRET_ACCESS_KEY=$(echo $CREDS | jq -r '.SecretAccessKey')" >> $GITHUB_ENV
+          echo "AWS_SESSION_TOKEN=$(echo $CREDS | jq -r '.SessionToken')" >> $GITHUB_ENV
+          echo "::add-mask::$(echo $CREDS | jq -r '.AccessKeyId')"
+          echo "::add-mask::$(echo $CREDS | jq -r '.SecretAccessKey')"
+          echo "::add-mask::$(echo $CREDS | jq -r '.SessionToken')"
+
       - name: Trigger Service Redeployment
         run: |
           aws ecs update-service --cluster ${{ env.CLUSTER_NAME }} --service ${{ env.SERVICE_NAME }} --force-new-deployment --region ${{ env.AWS_REGION }}
