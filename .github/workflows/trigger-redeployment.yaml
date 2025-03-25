@@ -1,0 +1,63 @@
+name: Trigger Redeployment
+
+on:
+  workflow_dispatch:
+    inputs:
+      aws_region:
+        description: "aws region that ecr is in"
+        default: "eu-north-1"
+        required: true
+        type: string
+      ecr_aws_account_id:
+        description: "aws account id that ecr is in"
+        default: "545009859307"
+        required: true
+        type: string
+      ecs_account_id:
+        description: "Account ID where ecs bucket is created"
+        default: "216989125379"
+        required: true
+        type: string
+      cluster_name:
+        description: "ECS Cluster Name service is in"
+        default: "personal-cluster"
+        required: true
+        type: string
+      service_name:
+        description: "Service Name to redeploy"
+        default: "main-personal-service"
+        required: true
+        type: string
+jobs:
+  trigger-redeployment:
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
+    env:
+      AWS_ACCOUNT_ID: ${{ inputs.ecr_aws_account_id || '545009859307' }}
+      AWS_REGION: ${{ inputs.aws_region || 'eu-north-1' }}
+      MAIN_ROLE_ARN: "arn:aws:iam::${{ inputs.ecr_aws_account_id || '545009859307' }}:role/github-actions"
+      PROD_ROLE_ARN: "arn:aws:iam::${{ inputs.ecs_account_id || '216989125379' }}:role/github-ecs-prod-access"
+      CLUSTER_NAME: ${{ inputs.cluster_name || 'personal-cluster' }}
+      SERVICE_NAME: ${{ inputs.service_name || 'main-personal-service' }}
+    steps:
+      - name: Assume Role in Main AWS Account
+        id: assume-main-ecs-service
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ env.MAIN_ROLE_ARN }}
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: Assume Role in Prod AWS Account (ECS Update)
+        id: assume-prod-ecs-service
+        run: |
+          CREDS=$(aws sts assume-role \
+            --role-arn ${{ env.PROD_ROLE_ARN }} \
+            --role-session-name GitHubActionsProdRole \
+            --query "Credentials" \
+            --output json)
+
+      - name: Trigger Service Redeployment
+        run: |
+          aws ecs update-service --cluster ${{ env.CLUSTER_NAME }} --service ${{ env.SERVICE_NAME }} --force-new-deployment --region ${{ env.AWS_REGION }}
