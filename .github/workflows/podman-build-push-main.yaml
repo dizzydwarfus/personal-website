@@ -125,7 +125,35 @@ jobs:
           export ECR_URI="$AWS_ACCOUNT_ID.dkr.ecr.${{ env.AWS_REGION }}.amazonaws.com"
           podman push $ECR_URI/${{ env.APP_NAME }}:${{ env.PR_NUM }}
           echo Successfully pushed to $ECR_URI/${{ env.APP_NAME }}:${{ env.PR_NUM }}
+      
+  trigger-redeployment:
+    needs: build-and-push
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
+    env:
+      AWS_ACCOUNT_ID: ${{ inputs.aws_account_id || '545009859307' }}
+      AWS_REGION: ${{ inputs.aws_region || 'eu-north-1' }}
+      MAIN_ROLE_ARN: "arn:aws:iam::${{ inputs.aws_account_id || '545009859307' }}:role/github-actions"
+      PROD_ROLE_ARN: "arn:aws:iam::${{ inputs.ecs_account_id || '216989125379' }}:role/github-ecs-prod-access"
+    steps:
+      - name: Assume Role in Main AWS Account
+        id: assume-main-ecs-service
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ env.MAIN_ROLE_ARN }}
+          aws-region: ${{ env.AWS_REGION }}
 
+      - name: Assume Role in Prod AWS Account (ECS Update)
+        id: assume-prod-ecs-service
+        run: |
+          CREDS=$(aws sts assume-role \
+            --role-arn ${{ env.PROD_ROLE_ARN }} \
+            --role-session-name GitHubActionsProdRole \
+            --query "Credentials" \
+            --output json)
+      
       - name: Trigger Service Redeployment
         run: |
           aws ecs update-service --cluster personal-cluster --service main-personal-service --force-new-deployment --region ${{ env.AWS_REGION }}
