@@ -117,7 +117,7 @@ export default function IcebergStack() {
                   {!resumeData ? (
                     <p>Loading projects data...</p>
                   ) : (
-                    <div className="max-h-[60vh] overflow-y-auto grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div className="max-h-[60vh] overflow-y-auto grid grid-cols-1 md:grid-cols-1 gap-4">
                       {resumeData[selectedSegment.resumeKey].map(
                         (proj, idx) => (
                           <div
@@ -142,9 +142,11 @@ export default function IcebergStack() {
                               <p className="text-sm text-gray-600 mb-2">
                                 {proj.timeframe} | {proj.techStack?.join(", ")}
                               </p>
-                              <p className="text-sm mb-3">
-                                {proj.bulletPoints.join(", ")}
-                              </p>
+                              <ul className="list-disc list-inside text-sm text-gray-700 mb-3 space-y-1">
+                                {proj.bulletPoints.map((point, i) => (
+                                  <li key={i}>{point}</li>
+                                ))}
+                              </ul>
                               {/* Links (Repo / Live Demo) */}
                               <div className="flex space-x-4">
                                 {proj.repoLink && (
@@ -164,7 +166,7 @@ export default function IcebergStack() {
                                     rel="noopener noreferrer"
                                     className="text-blue-500 hover:underline text-sm"
                                   >
-                                    Live Demo
+                                    Check it Out
                                   </a>
                                 )}
                               </div>
