@@ -69,6 +69,7 @@ export interface ResumeData {
   skills: Skill[];
   languages: Language[];
   projects: Project[];
+  icebergSegments: Segment[];
 }
 
 export interface Details {

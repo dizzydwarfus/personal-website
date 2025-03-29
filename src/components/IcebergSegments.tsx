@@ -3,7 +3,6 @@
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { icebergSegments } from "@public/data/segmentsData";
 import { Segment, ResumeData } from "@/app/interfaces";
 import CollapsibleExperience from "@/components/resume/CollapsibleExperience";
 
@@ -92,34 +91,44 @@ export default function IcebergStack() {
         </div>
       </motion.div>
       <div className="flex flex-col items-center justify-start p-0 m-0">
-        {icebergSegments.map((segment, index) => (
-          <motion.div
-            key={segment.id}
-            className="cursor-pointer p-0 m-0"
-            initial={{ opacity: 0, y: 30, scale: 0.98 }}
-            whileInView={{ opacity: 1, y: 0, scale: 1 }}
-            viewport={{ once: true, amount: 0.4 }}
-            transition={{ duration: 0.6, delay: index * 0.15, ease: "easeOut" }}
-            whileHover={{
-              scale: 1.02,
-            }}
-            onClick={() => openModal(segment)}
-          >
-            <div className="relative">
-              <Image
-                src={segment.image}
-                alt={segment.title}
-                width={segment.width}
-                height={segment.height}
-                unoptimized
-                className="max-w-full h-auto drop-shadow-xl opacity-90 brightness-95 transition-all"
-              />
-              <div className="absolute inset-0 flex items-center justify-center bg-black/40 backdrop-blur-sm opacity-0 hover:opacity-100 transition-opacity duration-300 text-white text-sm font-semibold">
-                {segment.title}
-              </div>
-            </div>
-          </motion.div>
-        ))}
+        {!resumeData ? (
+          <p>Loading iceberg data...</p>
+        ) : (
+          <div className="flex flex-col items-center justify-start p-0 m-0">
+            {resumeData.icebergSegments.map((segment, index) => (
+              <motion.div
+                key={segment.id}
+                className="cursor-pointer p-0 m-0"
+                initial={{ opacity: 0, y: 30, scale: 0.98 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                viewport={{ once: true, amount: 0.4 }}
+                transition={{
+                  duration: 0.6,
+                  delay: index * 0.15,
+                  ease: "easeOut",
+                }}
+                whileHover={{
+                  scale: 1.02,
+                }}
+                onClick={() => openModal(segment)}
+              >
+                <div className="relative">
+                  <Image
+                    src={segment.image}
+                    alt={segment.title}
+                    width={segment.width}
+                    height={segment.height}
+                    unoptimized
+                    className="max-w-full h-auto drop-shadow-xl opacity-90 brightness-95 transition-all"
+                  />
+                  <div className="absolute inset-0 flex items-center justify-center bg-black/40 backdrop-blur-sm opacity-0 hover:opacity-100 transition-opacity duration-300 text-white text-sm font-semibold">
+                    {segment.title}
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        )}
       </div>
 
       {/* Modal Overlay */}
