@@ -3,7 +3,7 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   output: "standalone",
   images: {
-    minimumCacheTTL: 86400, // 1 day
+    minimumCacheTTL: 31536000, // 1 day
   },
   async headers() {
     return [
