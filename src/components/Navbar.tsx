@@ -12,7 +12,6 @@ export default function Navbar() {
 
   const navLinks: NavLink[] = [
     { name: "Beneath the Surface", path: "/" },
-    { name: "Creations", path: "/portfolio" },
     { name: "Trail & Timeline", path: "/resume" },
   ];
 
